@@ -37,7 +37,6 @@ class TestingConfig(BaseConfig):
 
 
 class ProductionConfig(BaseConfig):
-    TESTING = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data-prod.sqlite')
 
     SECRET_KEY = os.environ.get('SECRET_KEY')
