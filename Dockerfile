@@ -17,6 +17,4 @@ RUN poetry config settings.virtualenvs.create false && \
 COPY . /code
 COPY --from=node_build dist /code/app/assets/vendor
 
-CMD ["flask", "run", "-h", "0.0.0.0", "-p", "5000"]
-
-EXPOSE 5000
+CMD flask run -h 0.0.0.0 -p $PORT
