@@ -16,6 +16,7 @@ class BaseConfig:
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
+    TEMPLATES_AUTO_RELOAD = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
 
     SECRET_KEY = 'insecure-development-secret-key'
