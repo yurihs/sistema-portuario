@@ -1,0 +1,11 @@
+[tool.poetry]
+name = "sistema-portuario"
+version = "0.1.0"
+description = "Projeto da disciplina de Engenharia de Software"
+authors = []
+
+[tool.poetry.dependencies]
+python = "^3.4"
+Flask = "^1.0"
+Flask-SQLAlchemy = "^2.4"
+Flask-Assets = "^0.12.0"
