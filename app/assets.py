@@ -18,6 +18,7 @@ vendor_css = Bundle(
 vendor_js = Bundle(
     'jquery.js',
     'bootstrap.bundle.js',
+    'feather.js',
     filters=['rjsmin'],
     output='scripts/vendor.js'
 )
