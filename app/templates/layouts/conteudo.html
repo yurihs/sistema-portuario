@@ -3,16 +3,21 @@
 {% block body %}
 <div class="container-fluid">
     <div class="row">
-        <nav class="col-auto bg-light pt-2 sidebar">
+        <nav class="sidebar col-auto bg-light pt-2">
             {% include 'partials/sidebar.html' %}
         </nav>
 
-        <main class="col px-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 border-bottom">
+        <main class="col">
+            <div class="content d-flex justify-content-between flex-wrap flex-md-nowrap">
             {% block content %}
             {% endblock %}
             </div>
         </main>
+    </div>
+    <div class="row">
+        <nav class="footer col p-0 d-flex flex-column-reverse flex-md-row justify-content-center align-items-center bg-dark text-light">
+            {% include 'partials/footer.html' %}
+        </nav>
     </div>
 </div>
 {% endblock %}

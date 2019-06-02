@@ -1,0 +1,25 @@
+{% set session = {
+    'user': 'Hubert Blaine Wolfeschlegelsteinhausenbergerdorff Sr.'
+}%}
+
+<div class="ml-3">
+    {{ config.APP_NAME }}
+</div>
+
+<div class="ml-auto pr-3">
+</div>
+
+{% if session.user %}
+<div class="btn-group dropup align-self-stretch menu-usuario">
+    <button id="menu_usuario" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span data-feather="user"></span>
+        <span class="menu-usuario__nome">{{ session.user }}</span>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="menu_usuario">
+        <button type="button" class="dropdown-item">
+            <span data-feather="log-out"></span>
+            Sair
+        </button>
+    </div>
+</div>
+{% endif %}

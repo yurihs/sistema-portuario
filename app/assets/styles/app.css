@@ -1,5 +1,5 @@
 .sidebar {
-    height: 100vh;
+    height: calc(100vh - 2.8rem);
 }
 
 .sidebar .nav-link .feather {
@@ -11,4 +11,20 @@
 
 .sidebar .nav-link.active {
     font-weight: bold;
+}
+
+.content {
+    padding: 1.5rem 2rem;
+}
+
+.footer {
+    height: 2.8rem;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.menu-usuario .menu-usuario__nome {
+    word-break: break-all;
 }
