@@ -6,5 +6,5 @@
 {% assets 'vendor_css' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}
 {% assets 'app_css' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}
 
-{% assets 'vendor_js' %}<script src="{{ ASSET_URL }}"></script>{% endassets %}
-{% assets 'app_js' %}<script src="{{ ASSET_URL }}"></script>{% endassets %}
+{% assets 'vendor_js' %}<script defer src="{{ ASSET_URL }}"></script>{% endassets %}
+{% assets 'app_js' %}<script defer src="{{ ASSET_URL }}"></script>{% endassets %}
