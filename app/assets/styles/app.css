@@ -6,13 +6,9 @@
     width: 16px;
     height: 16px;
     vertical-align: text-bottom;
-}
-
-.sidebar .nav-link .feather {
     margin-right: 4px;
 }
 
 .sidebar .nav-link.active {
     font-weight: bold;
 }
-
