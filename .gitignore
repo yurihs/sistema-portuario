@@ -1,5 +1,7 @@
 app/assets/vendor/*
+app/static/scripts/app.js
 app/static/scripts/vendor.js
+app/static/styles/app.css
 app/static/styles/vendor.css
 
 
