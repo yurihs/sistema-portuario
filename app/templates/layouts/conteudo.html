@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-auto bg-light pt-2 sidebar">
+            {% include 'partials/sidebar.html' %}
+        </nav>
+
+        <main class="col px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 border-bottom">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% set items=[
+    dict(texto='Home', icone='home', atual=True),
+    dict(texto='Portos', icone='anchor'),
+    dict(texto='Empresas', icone='globe'),
+    dict(texto='Navios', icone='life-buoy'),
+    dict(texto='Viagens', icone='navigation'),
+    dict(texto='Usuários', icone='users'),
+    dict(texto='Relatórios', icone='file-text'),
+] %}
+
+<ul class="nav flex-column">
+    {% for item in items %}
+    <li class="nav-item">
+        <a href="{{ item.link|default('#') }}" class="nav-link px-0 px-sm-3 {{ 'active' if item.atual }}">
+            <span data-feather="{{ item.icone }}"></span>
+            <span class="d-none d-sm-inline">{{ item.texto }}</span>
+            {% if item.current %}<span class="sr-only">(atual)</span>{% endif %}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
