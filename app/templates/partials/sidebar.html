@@ -11,7 +11,7 @@
 <ul class="nav flex-column">
     {% for item in items %}
     <li class="nav-item">
-        <a href="{{ item.link|default('#') }}" class="nav-link px-0 px-sm-3 {{ 'active' if request.path == item.link }}">
+        <a href="{{ item.link|default('#') }}" class="nav-link px-0 px-sm-3 {{ 'active' if request.path.startswith(item.link) }}">
             <span data-feather="{{ item.icone }}"></span>
             <span class="d-none d-sm-inline">{{ item.texto }}</span>
             {% if item.current %}<span class="sr-only">(atual)</span>{% endif %}
