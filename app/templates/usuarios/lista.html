@@ -1,0 +1,64 @@
+{% extends 'layouts/conteudo.html' %}
+
+{% set session = {
+    'user': {
+        'id': 1
+    }
+}%}
+
+{% set usuarios = [
+    dict(id=1, nome='Hubert Blaine Wolfeschlegelsteinhausenbergerdorff Sr.', email="hubertbw@example.com", cpf='109.985.380-00', tipo='Administrador'),
+    dict(id=2, nome='Fulano da Silva', email="fulanos@example.com", cpf='796.520.230-19', tipo='Funcionário'),
+    dict(id=3, nome='Alice', email="alice@example.com", cpf='832.557.570-02', tipo='Funcionário'),
+    dict(id=4, nome='Bob', email="bob@example.com", cpf='902.795.460-76', tipo='Funcionário'),
+    dict(id=5, nome='Charlie', email="charlie@example.com", cpf='882.450.240-74', tipo='Funcionário'),
+    dict(id=6, nome='Dave', email="dave@example.com", cpf='540.911.310-18', tipo='Funcionário'),
+] %}
+
+{% block content %}
+    {% if usuarios %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <caption>Lista de usuários</caption>
+            <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>
+                        <div>
+                            {{ usuario.nome }}
+                            {% if usuario.tipo == 'Administrador' %}
+                                <span class="badge badge-pill badge-info">Administrador</span>
+                            {% elif usuario.tipo == 'Funcionário' %}
+                                <span class="badge badge-pill badge-secondary">Funcionário</span>
+                            {% endif %}
+                            {% if usuario.id == session.user.id %}
+                                <span>É você!</span>
+                            {% endif %}
+                        </div>
+                        <div class="text-muted">
+                            {{ usuario.email }}
+                        </div>
+                    </td>
+                    <td>{{ usuario.cpf }}</td>
+                    <td>
+                        <a href="{{ url_for('usuario.editar', id_usuario=usuario.id) }}" class="btn btn-sm">
+                            <span data-feather="edit" class="text-muted" aria-hidden="true"></span>
+                            <span class="sr-only">Editar</span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        Nenhum usuário cadastrado!
+    {% endif %}
+{% endblock %}

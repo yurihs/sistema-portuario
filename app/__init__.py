@@ -35,4 +35,8 @@ def create_app():
     from app.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
+    from app.usuario import usuario as usuario_blueprint
+    app.register_blueprint(usuario_blueprint, url_prefix='/usuarios')
+
+
     return app
