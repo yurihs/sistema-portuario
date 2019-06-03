@@ -17,6 +17,11 @@ def listar_usuarios():
     return render_template('usuarios/listar.html', usuarios=usuarios)
 
 
+@usuario.route('/cadastrar', methods=['GET', 'POST'])
+def cadastrar():
+    return render_template('usuarios/cadastrar.html')
+
+
 @usuario.route('/<int:id_usuario>')
 def editar(id_usuario):
     usuario = usuarios[id_usuario-1]

@@ -8,9 +8,15 @@
 
 {% block content %}
     {% if usuarios %}
+    <div class="d-flex align-items-baseline">
+        <h1>Lista de usuários <span class="ml-1 badge badge badge-pill badge-secondary">{{ usuarios|length }}</span></h1>
+        <a href="{{ url_for('usuario.cadastrar') }}" class="ml-auto btn btn-success">
+            <span data-feather="user-plus" aria-hidden="true"></span>
+            <span class="d-none d-md-inline">Cadastrar usuário</span>
+        </a>
+    </div>
     <div class="table-responsive">
         <table class="table table-hover">
-            <caption>Lista de usuários <span class="ml-1 badge badge-pill badge-secondary">{{ usuarios|length }}</span></caption>
             <thead>
             <tr>
                 <th scope="col">Nome</th>
