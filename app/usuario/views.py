@@ -14,7 +14,7 @@ usuarios = [
 
 @usuario.route('/')
 def listar_usuarios():
-    return render_template('usuarios/lista.html', usuarios=usuarios)
+    return render_template('usuarios/listar.html', usuarios=usuarios)
 
 
 @usuario.route('/<int:id_usuario>')
