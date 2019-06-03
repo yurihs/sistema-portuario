@@ -31,15 +31,15 @@
             {% for usuario in usuarios %}
                 <tr>
                     <td>
-                        <div>
+                        <div class="d-flex flex-wrap align-items-center">
                             {{ usuario.nome }}
                             {% if usuario.tipo == 'Administrador' %}
-                                <span class="badge badge-pill badge-info">Administrador</span>
+                                <span class="ml-2 badge badge-pill badge-info">Administrador</span>
                             {% elif usuario.tipo == 'Funcionário' %}
-                                <span class="badge badge-pill badge-secondary">Funcionário</span>
+                                <span class="ml-2 badge badge-pill badge-secondary">Funcionário</span>
                             {% endif %}
                             {% if usuario.id == session.user.id %}
-                                <span>É você!</span>
+                                <span class="ml-2 text-muted">É você!</span>
                             {% endif %}
                         </div>
                         <div class="text-muted">
