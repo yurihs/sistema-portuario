@@ -19,6 +19,7 @@ vendor_js = Bundle(
     'jquery.js',
     'bootstrap.bundle.js',
     'feather.js',
+    'cleave.js',
     filters=['rjsmin'],
     output='scripts/vendor.js'
 )
