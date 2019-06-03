@@ -19,5 +19,5 @@ def listar_usuarios():
 
 @usuario.route('/<int:id_usuario>')
 def editar(id_usuario):
-    pass
-
+    usuario = usuarios[id_usuario-1]
+    return render_template('usuarios/editar.html', usuario=usuario)

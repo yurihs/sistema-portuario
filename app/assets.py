@@ -7,6 +7,7 @@ app_css = Bundle(
 
 app_js = Bundle(
     'app.js',
+    'usuario.js',
     output='scripts/app.js'
 )
 

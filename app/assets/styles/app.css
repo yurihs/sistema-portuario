@@ -17,6 +17,22 @@
     padding: 1.5rem 2rem;
 }
 
+.content h1 {
+    margin-bottom: .5rem;
+    padding: 0.75rem 0;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.content h2 {
+    margin-bottom: .25rem;
+    padding: 0.5rem 0;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
 .footer {
     height: 2.8rem;
 }
@@ -27,4 +43,16 @@
 
 .menu-usuario .menu-usuario__nome {
     word-break: break-all;
+}
+
+.table caption {
+    caption-side: top;
+    margin-bottom: .5rem;
+    padding: 0.75rem 0;
+    line-height: 1.2;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    color: rgb(33, 37, 41);;
 }

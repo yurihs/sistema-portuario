@@ -1,0 +1,84 @@
+{% extends 'layouts/conteudo.html' %}
+
+{% block content %}
+<h1>Editar usuário</h1>
+
+<section>
+    <h1 class="sr-only">Formulário de edição do usuário</h1>
+    <div class="row mb-4">
+        <form method="post" class="col-md-10">
+            <h2>Dados pessoais</h2>
+            <div class="form-group form-row">
+                <label for="nome" class="col-md-2 col-form-label">Nome</label>
+                <div class="col-md-10">
+                    <input required type="text" name="nome" id="nome" class="form-control" value="{{ usuario.nome }}">
+                </div>
+            </div>
+            <div class="form-group form-row">
+                <label for="email" class="col-md-2 col-form-label">E-mail</label>
+                <div class="col-md-10">
+                    <input required type="email" name="email" id="email" class="form-control" value="{{ usuario.email }}">
+                </div>
+            </div>
+            <div class="form-group form-row">
+                <label for="cpf" class="col-md-2 col-form-label">CPF</label>
+                <div class="col-md-5">
+                    <input required type="text" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" name="cpf" id="cpf" class="form-control" value="{{ usuario.cpf }}">
+                </div>
+            </div>
+
+            <h2>Dados do sistema</h2>
+            <div class="form-group form-row">
+                <label for="tipo" class="col-md-2 col-form-label">Tipo</label>
+                <div class="col-md-5">
+                    <select required type="text" name="tipo" id="tipo" class="custom-select">
+                        {% for opcao in ['Administrador', 'Funcionário'] %}
+                        <option {{ 'selected' if opcao == usuario.tipo else '' }}>{{ opcao }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <h2>Autenticação</h2>
+            <div class="form-group form-row">
+                <label for="senha" class="col-md-2 col-form-label">Senha</label>
+                <div class="col-md-10">
+                    <input type="password" name="senha" id="senha" class="form-control" placeholder="(inalterada)">
+                </div>
+            </div>
+            <div class="form-group form-row">
+                <label for="confirmar_senha" class="col-md-2 col-form-label">Confirmar senha</label>
+                <div class="col-md-10">
+                    <input type="password" name="confirmar_senha" id="confirmar_senha" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col-sm-auto">
+                    <button type="submit" class="btn btn-primary w-100">Salvar alterações</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section>
+    <div class="row">
+        <div class="col-md-10 col-lg-7">
+            <h2>Outras ações</h2>
+            <div class="card border-danger">
+                <div class="card-body">
+                    <div class="card-title text-danger font-weight-bold">Deletar usuário</div>
+                    <div class="card-text">
+                        Remove todas as informações do usuário.<br>Esta operação não pode ser desfeita.
+                        <div class="mt-4">
+                            <a href="#" class="btn btn-danger">Deletar usuário</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
