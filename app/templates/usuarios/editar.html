@@ -1,7 +1,13 @@
 {% extends 'layouts/conteudo.html' %}
 
 {% block content %}
-<h1>Editar usuário</h1>
+<h1 class="d-flex align-items-center">
+    <span class="badge badge-secondary mr-2">
+        <span data-feather="edit"></span>
+    </span>
+    Editar usuário
+</h1>
+
 
 <section>
     <h1 class="sr-only">Formulário de edição do usuário</h1>
@@ -55,7 +61,10 @@
             <div class="form-row">
                 <div class="col"></div>
                 <div class="col-sm-auto">
-                    <button type="submit" class="btn btn-primary w-100">Salvar alterações</button>
+                    <button type="submit" class="btn btn-primary w-100">
+                        <span data-feather="save" aria-hidden="true" class="mr-1"></span>
+                        Salvar alterações
+                    </button>
                 </div>
             </div>
         </form>
@@ -72,7 +81,10 @@
                     <div class="card-text">
                         Remove todas as informações do usuário.<br>Esta operação não pode ser desfeita.
                         <div class="mt-4">
-                            <a href="#" class="btn btn-danger">Deletar usuário</a>
+                            <a href="#" class="btn btn-danger">
+                                <span data-feather="user-x" aria-hidden="true" class="mr-1"></span>
+                                Deletar usuário
+                            </a>
                         </div>
                     </div>
                 </div>
