@@ -3,12 +3,14 @@
 {% block body %}
 <div class="container-fluid">
     <div class="row flex-nowrap">
-        <nav class="sidebar col-auto bg-light pt-2">
-            {% include 'partials/sidebar.html' %}
-        </nav>
+        <div class="col-auto bg-light pt-2">
+            <nav class="sidebar">
+                {% include 'partials/sidebar.html' %}
+            </nav>
+        </div>
 
-        <main class="col">
-            <div class="content">
+        <main class="col-10">
+            <div class="content p-0 p-sm-4">
             {% block content %}
             {% endblock %}
             </div>
