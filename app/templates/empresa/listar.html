@@ -1,0 +1,80 @@
+{% extends 'layouts/conteudo.html' %}
+
+{% block content %}
+    {% if empresas %}
+    <div class="d-flex align-items-baseline">
+        <h1 class="d-flex align-items-center">
+            <span class="badge badge-pill badge-secondary mr-2">{{ empresas|length }}</span>
+            Lista de empresas
+        </h1>
+        <a href="{{ url_for('empresa.cadastrar') }}" class="ml-auto btn btn-success">
+            <span data-feather="plus" aria-hidden="true"></span>
+            <span class="d-none d-md-inline">Cadastrar empresa</span>
+        </a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Nome/CNPJ</th>
+                <th scope="col">Contato</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for empresa in empresas %}
+                <tr>
+                    <td>
+                        <div>
+                            {% if empresa.nome_fantasia %}
+                            {{ empresa.nome_fantasia }}<br>
+                            {% endif %}
+                            {{ empresa.razao_social }}
+                        </div>
+                        <div>
+                            {{ empresa.cnpj }}
+                        </div>
+                    </td>
+                    <td>
+                        <div>{{ empresa.telefone }}</div>
+                        <div>{{ empresa.email }}</div>
+                    </td>
+                    <td class="small">
+                        {% if empresa.endereco.logradouro %}
+                        {{ empresa.endereco.logradouro }}<br>
+                        {% endif %}
+                        {% if empresa.endereco.cidade and empresa.endereco.estado %}
+                        {{ empresa.endereco.cidade }}, {{ empresa.endereco.estado }}<br>
+                        {% elif empresa.endereco.cidade and not empresa.endereco.estado %}
+                        {{ empresa.endereco.cidade }}<br>
+                        {% elif empresa.endereco.estado %}
+                        {{ empresa.endereco.estado }}<br>
+                        {% endif %}
+                        {% if empresa.endereco.pais %}
+                        {{ empresa.endereco.pais }}<br>
+                        {% endif %}
+                        {% if empresa.endereco.codigo_postal %}
+                        {{ empresa.endereco.codigo_postal }}<br>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('empresa.editar', id_empresa=empresa.id) }}" class="btn btn-sm">
+                            <span data-feather="edit" class="text-muted" aria-hidden="true"></span>
+                            <span class="sr-only">Editar</span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        Nenhum empresa cadastrado!
+        <br>
+        <a href="{{ url_for('empresa.cadastrar') }}" class="d-inline-block mt-4 btn btn-success">
+            <span data-feather="plus" aria-hidden="true"></span>
+            <span class="d-none d-md-inline">Cadastrar o primeiro empresa</span>
+        </a>
+    {% endif %}
+{% endblock %}

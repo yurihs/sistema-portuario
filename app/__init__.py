@@ -41,5 +41,8 @@ def create_app():
     from app.porto import porto as porto_blueprint
     app.register_blueprint(porto_blueprint, url_prefix='/portos')
 
+    from app.empresa import empresa as empresa_blueprint
+    app.register_blueprint(empresa_blueprint, url_prefix='/empresas')
+
 
     return app
