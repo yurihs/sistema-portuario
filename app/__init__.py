@@ -44,5 +44,8 @@ def create_app():
     from app.empresa import empresa as empresa_blueprint
     app.register_blueprint(empresa_blueprint, url_prefix='/empresas')
 
+    from app.relatorio import relatorio as relatorio_blueprint
+    app.register_blueprint(relatorio_blueprint, url_prefix='/relatorios')
+
 
     return app

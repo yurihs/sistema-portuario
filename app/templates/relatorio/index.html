@@ -1,0 +1,61 @@
+{% extends 'layouts/conteudo.html' %}
+
+{% block content %}
+
+
+<h1 class="d-flex align-items-center">
+    <span class="badge badge-secondary mr-2">
+        <span data-feather="file-text"></span>
+    </span>
+    Gerar relatório
+</h1>
+
+<div class="row mb-4">
+    <form method="post" class="col-md-10">
+        <div class="form-row">
+            <div class="col-md form-group">
+                <label for="data_inicio">Data de início</label>
+                <input required type="date" name="data_inicio" id="data_inicio" class="form-control">
+            </div>
+            <div class="col-md form-group">
+                <label for="data_fim">Data de término</label>
+                <input required type="date" name="data_fim" id="data_fim" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Tipo</label>
+            <div class="btn-group btn-group-toggle d-flex flex-column flex-md-row" data-toggle="buttons">
+                <label checked for="relatorio_especifico" class="btn btn-secondary active">
+                    <input type="radio" name="tipo_relatorio" id="relatorio_especifico" value="especifico">
+                    Específico
+                </label>
+                <label for="relatorio_geral" class="btn btn-secondary">
+                    <input type="radio" name="tipo_relatorio" id="relatorio_geral" value="geral">
+                    Geral
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="empresa">Empresa</label>
+            <select type="number" min="0" name="empresa" id="empresa" class="custom-select">
+                <option selected value="-1"></option>
+                {% for empresa in empresas %}
+                    <option value="{{ empresa.id }}">{{ empresa.razao_social }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-row">
+            <div class="col"></div>
+            <div class="col-sm-auto">
+                <button type="submit" class="btn btn-primary">
+                    <span data-feather="arrow-right" aria-hidden="true" class="mr-1"></span>
+                    Gerar relatório
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
