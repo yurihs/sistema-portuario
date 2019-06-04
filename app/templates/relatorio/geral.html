@@ -33,7 +33,7 @@
 
 <div class="d-flex flex-wrap flex-md-nowrap align-items-baseline justify-content-between">
     <h1 class="pb-0 pb-md-2">Visão Geral - {{ porto.nome }}</h1>
-    <button type="button" class="btn btn-md-lg btn-secondary ml-md-auto mb-3 mb-md-0">
+    <button type="button" onclick="window.print()" class="d-print-none btn btn-md-lg btn-secondary ml-md-auto mb-3 mb-md-0">
         <span data-feather="printer" aria-hidden="true" class="mr-1"></span>
         Imprimir
     </button>
@@ -44,7 +44,7 @@
 </p>
 
 <div class="row flex-wrap">
-    <div class="col p-4 d-flex flex-wrap align-items-center justify-content-center">
+    <div class="col-lg-6 p-4 d-flex flex-wrap align-items-center justify-content-center">
         <div class="d-flex flex-column align-items-center badge bg-light px-4 py-3 mr-3 mb-3">
             <div class="h3 m-0 mb-1">{{ total_n_viagens }}</div>
             <div class="h5 m-0 text-muted">viagens</div>
@@ -58,14 +58,14 @@
             <div class="h5 m-0 text-muted">portos de origem</div>
         </div>
     </div>
-    <div class="col">
+    <div class="col-lg-6">
         <canvas id="graficoEmpresaPorNumeroDeViagens"></canvas>
     </div>
     <div class="w-100"></div>
-    <div class="col">
+    <div class="col-lg-6">
         <canvas id="graficoEmpresaPorTipoDeCarga"></canvas>
     </div>
-    <div class="col">
+    <div class="col-lg-6">
         <canvas id="graficoTipoDeCargaPorQuantidade"></canvas>
     </div>
 </div>

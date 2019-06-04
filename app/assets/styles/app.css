@@ -53,3 +53,13 @@
 
     color: rgb(33, 37, 41);;
 }
+
+@media print {
+    main {
+        flex-basis: auto !important;
+        max-width: max-content !important;
+    }
+    .sidebar-wrapper {
+        display: none;
+    }
+}
