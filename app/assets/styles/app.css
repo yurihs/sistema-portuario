@@ -41,8 +41,9 @@
     border-radius: 0;
 }
 
-.menu-usuario .menu-usuario__nome {
-    word-break: break-all;
+.menu-usuario .dropdown-toggle {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .table caption {
