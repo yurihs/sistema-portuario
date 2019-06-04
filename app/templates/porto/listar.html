@@ -1,0 +1,72 @@
+{% extends 'layouts/conteudo.html' %}
+
+{% block content %}
+    {% if portos %}
+    <div class="d-flex align-items-baseline">
+        <h1 class="d-flex align-items-center">
+            <span class="badge badge-pill badge-secondary mr-2">{{ portos|length }}</span>
+            Lista de portos
+        </h1>
+        <a href="{{ url_for('porto.cadastrar') }}" class="ml-auto btn btn-success">
+            <span data-feather="plus" aria-hidden="true"></span>
+            <span class="d-none d-md-inline">Cadastrar porto</span>
+        </a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">Capacidade anual (TEUs)</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for porto in portos %}
+                <tr>
+                    <td>
+                        <div>{{ porto.nome }}</div>
+                        <div class="text-monospace text-muted">{{ porto.un_locode }}</div>
+                    </td>
+                    <td class="small">
+                        {% if porto.endereco.logradouro %}
+                        {{ porto.endereco.logradouro }}<br>
+                        {% endif %}
+                        {% if porto.endereco.cidade and porto.endereco.estado %}
+                        {{ porto.endereco.cidade }}, {{ porto.endereco.estado }}<br>
+                        {% elif porto.endereco.cidade and not porto.endereco.estado %}
+                        {{ porto.endereco.cidade }}<br>
+                        {% elif porto.endereco.estado %}
+                        {{ porto.endereco.estado }}<br>
+                        {% endif %}
+                        {% if porto.endereco.pais %}
+                        {{ porto.endereco.pais }}<br>
+                        {% endif %}
+                        {% if porto.endereco.codigo_postal %}
+                        {{ porto.endereco.codigo_postal }}<br>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ porto.capacidade_teus_anuais }}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('porto.editar', id_porto=porto.id) }}" class="btn btn-sm">
+                            <span data-feather="edit" class="text-muted" aria-hidden="true"></span>
+                            <span class="sr-only">Editar</span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        Nenhum porto cadastrado!
+        <br>
+        <a href="{{ url_for('porto.cadastrar') }}" class="d-inline-block mt-4 btn btn-success">
+            <span data-feather="plus" aria-hidden="true"></span>
+            <span class="d-none d-md-inline">Cadastrar o primeiro porto</span>
+        </a>
+    {% endif %}
+{% endblock %}
