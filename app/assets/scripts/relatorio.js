@@ -5,6 +5,28 @@ $(function (){
     Chart.defaults.global.title.fontColor = 'rgb(33, 37, 41)';
     Chart.defaults.global.title.position = 'top';
 
+    // Comum entre relatórios
+    // ======================
+
+    const canvasTipoDeCargaPorQuantidade = document.getElementById('graficoTipoDeCargaPorQuantidade');
+    if (canvasTipoDeCargaPorQuantidade) {
+        new Chart(
+            canvasTipoDeCargaPorQuantidade.getContext('2d'),
+            {
+                type: 'doughnut',
+                data: dadosTipoDeCargaPorQuantidade,
+                options: {
+                    title: {
+                        text: 'Quantidades de tipos de carga'
+                    }
+                }
+            }
+        );
+    }
+
+    // Relatório geral
+    // ===============
+
     const canvasEmpresaPorNumeroDeViagens = document.getElementById('graficoEmpresaPorNumeroDeViagens');
     if (canvasEmpresaPorNumeroDeViagens) {
         new Chart(
@@ -41,19 +63,46 @@ $(function (){
                 }
             });
     }
-    const canvasTipoDeCargaPorQuantidade = document.getElementById('graficoTipoDeCargaPorQuantidade');
-    if (canvasTipoDeCargaPorQuantidade) {
+
+    // Relatório específico
+    // ====================
+
+    const canvasNavioPorNumeroDeViagens = document.getElementById('graficoNavioPorNumeroDeViagens');
+    if (canvasNavioPorNumeroDeViagens) {
         new Chart(
-            canvasTipoDeCargaPorQuantidade.getContext('2d'),
+            canvasNavioPorNumeroDeViagens.getContext('2d'),
             {
-                type: 'doughnut',
-                data: dadosTipoDeCargaPorQuantidade,
+                type: 'horizontalBar',
+                data: dadosNavioPorNumeroDeViagens,
                 options: {
                     title: {
-                        text: 'Quantidades de tipos de carga'
+                        text: 'Viagens por navio',
+                    },
+                    legend: {
+                        display: false
                     }
                 }
-            }
-        );
+            });
     }
+    const canvasNavioPorTipoDeCarga = document.getElementById('graficoNavioPorTipoDeCarga');
+    if (canvasNavioPorTipoDeCarga) {
+        new Chart(
+            canvasNavioPorTipoDeCarga.getContext('2d'),
+            {
+                type: 'horizontalBar',
+                data: dadosNavioPorTipoDeCarga,
+                options: {
+                    title: {
+                        text: 'Tipos de carga por navio'
+                    },
+                    scales: {
+                        yAxes: [{
+                            stacked: true
+                        }]
+                    }
+                }
+            });
+    }
+
+
 });
