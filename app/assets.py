@@ -9,6 +9,7 @@ app_js = Bundle(
     'app.js',
     'usuario.js',
     'empresa.js',
+    'relatorio.js',
     output='scripts/app.js'
 )
 
@@ -22,6 +23,7 @@ vendor_js = Bundle(
     'bootstrap.bundle.js',
     'feather.js',
     'cleave.js',
+    'chart.js',
     filters=['rjsmin'],
     output='scripts/vendor.js'
 )
