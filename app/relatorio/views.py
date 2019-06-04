@@ -1,3 +1,5 @@
+import random
+
 from datetime import datetime
 from flask import Blueprint, render_template, request
 
@@ -20,9 +22,37 @@ def gerar_relatorio_geral():
     except (ValueError, TypeError) as e:
         return str(e), 400
 
+    empresas_to_n_viagens = {
+        empresa['nome_fantasia'] or empresa['razao_social']: random.randrange(80)
+        for empresa in empresas
+    }
+
+    tipo_de_carga_to_cor = {
+        'Contêiner': 'rgb(52, 58, 64)',
+        'Reefer': '#007bff'
+    }
+
+    empresas_to_tipo_de_carga = {
+        empresa['nome_fantasia'] or empresa['razao_social']: {
+            'Contêiner': random.randrange(80),
+            'Reefer': random.randrange(80)
+        }
+        for empresa in empresas
+    }
+
+    total_n_viagens = sum(empresas_to_n_viagens.values())
+    total_n_navios = 0 if total_n_viagens == 0 else random.randrange(total_n_viagens)
+    total_n_portos_origem = 20
+
     return render_template(
         'relatorio/geral.html',
         porto=portos[0],
         data_inicio=data_inicio,
-        data_termino=data_termino
+        data_termino=data_termino,
+        empresas_to_n_viagens=empresas_to_n_viagens,
+        tipo_de_carga_to_cor=tipo_de_carga_to_cor,
+        empresas_to_tipo_de_carga=empresas_to_tipo_de_carga,
+        total_n_viagens=total_n_viagens,
+        total_n_navios=total_n_navios,
+        total_n_portos_origem=total_n_portos_origem
     )

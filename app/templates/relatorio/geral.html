@@ -1,6 +1,28 @@
 {% extends 'layouts/conteudo.html' %}
 
 {% block content %}
+<script>
+    var dadosEmpresaPorNumeroDeViagens = {
+        labels: {{ empresas_to_n_viagens.keys() | list | safe }},
+        datasets: [{
+            backgroundColor: 'rgb(52, 58, 64)',
+            data: {{ empresas_to_n_viagens.values() | list | safe }}
+        }]
+    };
+    var dadosEmpresaPorTipoDeCarga = {
+        labels: {{ empresas_to_tipo_de_carga.keys() | list | safe }},
+        datasets: [
+            {% for tipo, cor_tipo in tipo_de_carga_to_cor.items() %}
+            {
+                label: '{{ tipo }}',
+                backgroundColor: '{{ cor_tipo }}',
+                data: {{ empresas_to_tipo_de_carga.values() | map(attribute=tipo) | list | safe }}
+            },
+            {% endfor %}
+        ]
+    };
+</script>
+
 <div class="d-flex flex-wrap flex-md-nowrap align-items-baseline justify-content-between">
     <h1 class="pb-0 pb-md-2">Visão Geral - {{ porto.nome }}</h1>
     <button type="button" class="btn btn-md-lg btn-secondary ml-md-auto mb-3 mb-md-0">
@@ -12,4 +34,32 @@
     <span class="sr-only">Data de início e de término</span>
     {{ data_inicio.strftime('%Y-%m-%d') }}&ndash;{{ data_termino.strftime('%Y-%m-%d') }}
 </p>
+
+<div class="row flex-wrap">
+    <div class="col p-4 d-flex align-items-baseline">
+        <div class="d-flex flex-column align-items-center badge bg-light px-4 py-3 mr-3 mb-3">
+            <div class="h3 m-0 mb-1">{{ total_n_viagens }}</div>
+            <div class="h5 m-0 text-muted">viagens</div>
+        </div>
+        <div class="d-flex flex-column align-items-center badge bg-light px-4 py-3 mr-3 mb-3">
+            <div class="h3 m-0 mb-1">{{ total_n_navios }}</div>
+            <div class="h5 m-0 text-muted">navios</div>
+        </div>
+        <div class="d-flex flex-column align-items-center badge bg-light px-4 py-3 mr-3 mb-3">
+            <div class="h3 m-0 mb-1">{{ total_n_portos_origem }}</div>
+            <div class="h5 m-0 text-muted">portos de origem</div>
+        </div>
+    </div>
+    <div class="col">
+        <canvas id="graficoEmpresaPorNumeroDeViagens"></canvas>
+    </div>
+    <div class="w-100"></div>
+    <div class="col">
+        <canvas id="graficoEmpresaPorTipoDeCarga"></canvas>
+    </div>
+    <div class="col">
+
+    </div>
+</div>
+
 {% endblock %}
