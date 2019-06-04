@@ -3,9 +3,11 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_assets import Environment
+
 from config import config_map
 
 from app import assets
+from app.utils import register_template_filters
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -20,6 +22,8 @@ def create_app():
     config.init_app(app)
 
     db.init_app(app)
+
+    register_template_filters(app)
 
     assets_env = Environment(app)
     assets_env.append_path(os.path.join(basedir, 'assets/scripts'))

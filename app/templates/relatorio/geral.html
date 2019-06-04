@@ -21,6 +21,14 @@
             {% endfor %}
         ]
     };
+    var dadosTipoDeCargaPorQuantidade = {
+        labels: {{ tipo_de_carga_to_cor.keys() | list | safe }},
+        datasets: [{
+                label: 'Quantidade',
+                backgroundColor: {{ tipo_de_carga_to_qty.keys() | map('extract', tipo_de_carga_to_cor) | list | safe }},
+                data: {{ tipo_de_carga_to_qty.values() | list | safe }}
+        }]
+    };
 </script>
 
 <div class="d-flex flex-wrap flex-md-nowrap align-items-baseline justify-content-between">
@@ -36,7 +44,7 @@
 </p>
 
 <div class="row flex-wrap">
-    <div class="col p-4 d-flex align-items-baseline">
+    <div class="col p-4 d-flex flex-wrap align-items-center justify-content-center">
         <div class="d-flex flex-column align-items-center badge bg-light px-4 py-3 mr-3 mb-3">
             <div class="h3 m-0 mb-1">{{ total_n_viagens }}</div>
             <div class="h5 m-0 text-muted">viagens</div>
@@ -58,7 +66,7 @@
         <canvas id="graficoEmpresaPorTipoDeCarga"></canvas>
     </div>
     <div class="col">
-
+        <canvas id="graficoTipoDeCargaPorQuantidade"></canvas>
     </div>
 </div>
 

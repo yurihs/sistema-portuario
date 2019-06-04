@@ -1,4 +1,11 @@
 $(function (){
+    Chart.defaults.global.layout.padding = {
+        top: 20,
+        right: 0,
+        bottom: 0,
+        left: 0
+    };
+
     var graficoEmpresaPorNumeroDeViagens = new Chart(
         $('#graficoEmpresaPorNumeroDeViagens')[0].getContext('2d'),
         {
@@ -37,4 +44,20 @@ $(function (){
                 }
         }
     });
+    var graficoTipoDeCargaPorQuantidade = new Chart(
+        $('#graficoTipoDeCargaPorQuantidade')[0].getContext('2d'),
+        {
+            type: 'doughnut',
+            data: dadosTipoDeCargaPorQuantidade,
+            options: {
+                title: {
+                    display: true,
+                    text: 'Quantidades de tipos de carga',
+                    fontSize: 18,
+                    fontColor: 'rgb(33, 37, 41)',
+                    position: 'top'
+                }
+            }
+        }
+    );
 });

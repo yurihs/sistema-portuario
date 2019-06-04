@@ -28,16 +28,23 @@ def gerar_relatorio_geral():
     }
 
     tipo_de_carga_to_cor = {
-        'Contêiner': 'rgb(52, 58, 64)',
-        'Reefer': '#007bff'
+        'Contêiner': '#66c2a5',
+        'Reefer': '#8da0cb',
+        'Granel': '#fc8d62',
     }
 
     empresas_to_tipo_de_carga = {
         empresa['nome_fantasia'] or empresa['razao_social']: {
             'Contêiner': random.randrange(80),
-            'Reefer': random.randrange(80)
+            'Reefer': random.randrange(80),
+            'Granel': random.randrange(80)
         }
         for empresa in empresas
+    }
+
+    tipo_de_carga_to_qty = {
+        tipo: random.randrange(80)
+        for tipo in tipo_de_carga_to_cor.keys()
     }
 
     total_n_viagens = sum(empresas_to_n_viagens.values())
@@ -52,6 +59,7 @@ def gerar_relatorio_geral():
         empresas_to_n_viagens=empresas_to_n_viagens,
         tipo_de_carga_to_cor=tipo_de_carga_to_cor,
         empresas_to_tipo_de_carga=empresas_to_tipo_de_carga,
+        tipo_de_carga_to_qty=tipo_de_carga_to_qty,
         total_n_viagens=total_n_viagens,
         total_n_navios=total_n_navios,
         total_n_portos_origem=total_n_portos_origem
