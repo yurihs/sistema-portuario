@@ -43,7 +43,7 @@ Pré-requisitos:
 5. Extrair e mover as dependências instaladas pelo NPM para dentro da aplicação:
     ```
     npm run build
-    rm -f app/assets/vendor
+    rm -rf app/assets/vendor
     mv dist app/assets/vendor
     ```
 6. Executar o aplicativo Flask em modo de desenvolvimento:
