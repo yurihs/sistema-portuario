@@ -1,0 +1,74 @@
+{% extends 'layouts/conteudo.html' %}
+
+{% block content %}
+
+<h1 class="d-flex align-items-center">
+    <span class="badge badge-secondary mr-2">
+        <span data-feather="plus"></span>
+    </span>
+    Cadastrar navio
+</h1>
+
+<div class="row mb-4">
+    <form method="post" class="col-md-10">
+        <div class="form-group form-row mb-4">
+            <label for="empresa" class="col-md-2 col-form-label">Empresa</label>
+            <div class="col-md-10">
+                <select type="number" min="0" name="empresa" id="empresa" class="custom-select">
+                    {% for empresa in empresas %}
+                        <option value="{{ empresa.id }}">{{ empresa.razao_social }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group form-row mb-4">
+            <label for="nome" class="col-md-2 col-form-label">Nome</label>
+            <div class="col-md-10">
+                <input required type="text" name="nome" id="nome" class="form-control">
+            </div>
+        </div>
+        <div class="form-group form-row">
+            <label for="numero_imo" class="col-md-2 col-form-label">Número IMO</label>
+            <div class="col-md-5">
+                <input required type="text" name="numero_imo" id="numero_imo" class="form-control text-monospace">
+            </div>
+        </div>
+        <div class="form-group form-row mb-4">
+            <label for="bandeira" class="col-md-2 col-form-label">Bandeira</label>
+            <div class="col-md-5">
+                <input required type="text" name="bandeira" id="bandeira" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group form-row">
+            <label for="comprimento_m" class="col-md-2 col-form-label">Comprimento (m)</label>
+            <div class="col-md-5">
+                <input type="number" min="0" name="comprimento_m" id="comprimento_m" class="form-control">
+            </div>
+        </div>
+        <div class="form-group form-row">
+            <label for="porte_bruto_t" class="col-md-2 col-form-label">Porte bruto (ton)</label>
+            <div class="col-md-5">
+                <input type="number" min="0" name="porte_bruto_t" id="porte_bruto_t" class="form-control">
+            </div>
+        </div>
+        <div class="form-group form-row">
+            <label for="n_tripulantes" class="col-md-2 col-form-label">Número de tripulantes</label>
+            <div class="col-md-5">
+                <input type="number" min="0" name="n_tripulantes" id="n_tripulantes" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col"></div>
+            <div class="col-sm-auto">
+                <button type="submit" class="btn btn-success w-100">
+                    <span data-feather="check" aria-hidden="true" class="mr-1"></span>
+                    Cadastrar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

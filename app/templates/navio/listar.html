@@ -1,0 +1,69 @@
+{% extends 'layouts/conteudo.html' %}
+
+{% block content %}
+    {% if navios %}
+    <div class="d-flex align-items-baseline">
+        <h1 class="d-flex align-items-center">
+            <span class="badge badge-pill badge-secondary mr-2">{{ navios|length }}</span>
+            Lista de navios
+        </h1>
+        <a href="{{ url_for('navio.cadastrar') }}" class="ml-auto btn btn-success">
+            <span data-feather="plus" aria-hidden="true"></span>
+            <span class="d-none d-md-inline">Cadastrar navio</span>
+        </a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Nome/IMO</th>
+                <th scope="col">Empresa</th>
+                <th scope="col">Bandeira</th>
+                <th scope="col">Comprimento (m)</th>
+                <th scope="col">Porte bruto (ton)</th>
+                <th scope="col">Número de tripulantes</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for navio in navios %}
+                <tr>
+                    <td>
+                        <div>{{ navio.nome }}</div>
+                        <div class="text-monospace text-muted">{{ navio.numero_imo }}</div>
+                    </td>
+                    <td>
+                        {{ navio.empresa.razao_social }}
+                    </td>
+                    <td>
+                        {{ navio.bandeira }}
+                    </td>
+                    <td>
+                        {{ navio.comprimento_m }}
+                    </td>
+                    <td>
+                        {{ navio.porte_bruto_t }}
+                    </td>
+                    <td>
+                        {{ navio.n_tripulantes }}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('navio.editar', id_navio=navio.id) }}" class="btn btn-sm">
+                            <span data-feather="edit" class="text-muted" aria-hidden="true"></span>
+                            <span class="sr-only">Editar</span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        Nenhum navio cadastrado!
+        <br>
+        <a href="{{ url_for('navio.cadastrar') }}" class="d-inline-block mt-4 btn btn-success">
+            <span data-feather="plus" aria-hidden="true"></span>
+            <span class="d-none d-md-inline">Cadastrar o primeiro navio</span>
+        </a>
+    {% endif %}
+{% endblock %}

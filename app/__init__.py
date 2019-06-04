@@ -47,5 +47,8 @@ def create_app():
     from app.relatorio import relatorio as relatorio_blueprint
     app.register_blueprint(relatorio_blueprint, url_prefix='/relatorios')
 
+    from app.navio import navio as navio_blueprint
+    app.register_blueprint(navio_blueprint, url_prefix='/navios')
+
 
     return app
