@@ -11,15 +11,15 @@
 </h1>
 
 <div class="row mb-4">
-    <form method="post" class="col-md-10">
+    <form method="post" action="{{ url_for('relatorio.gerar_relatorio_geral') }}" class="col-md-10">
         <div class="form-row">
             <div class="col-md form-group">
                 <label for="data_inicio">Data de início</label>
                 <input required type="date" name="data_inicio" id="data_inicio" class="form-control">
             </div>
             <div class="col-md form-group">
-                <label for="data_fim">Data de término</label>
-                <input required type="date" name="data_fim" id="data_fim" class="form-control">
+                <label for="data_termino">Data de término</label>
+                <input required type="date" name="data_termino" id="data_termino" class="form-control">
             </div>
         </div>
 
