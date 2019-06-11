@@ -44,6 +44,7 @@ Pré-requisitos:
     ```
     npm run build
     rm -rf app/assets/vendor
+    mv dist/static/* app/static
     mv dist app/assets/vendor
     ```
 6. Executar o aplicativo Flask em modo de desenvolvimento:

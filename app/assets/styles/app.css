@@ -1,3 +1,21 @@
+@font-face {
+  font-family: 'Signika';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src:
+    local('Signika Bold '),
+    local('Signika-Bold'),
+    url('/static/signika-bold.woff2') format('woff2'),
+    url('/static/signika-bold.woff') format('woff');
+}
+
+
+.logo {
+    font-family: 'Signika', sans-serif;
+    font-weight: bold;
+}
+
 .sidebar {
     height: calc(100vh - 2.8rem);
 }

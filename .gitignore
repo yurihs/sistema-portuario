@@ -3,6 +3,8 @@ app/static/scripts/app.js
 app/static/scripts/vendor.js
 app/static/styles/app.css
 app/static/styles/vendor.css
+app/static/signika-bold.woff
+app/static/signika-bold.woff2
 
 
 # Created by https://www.gitignore.io/api/linux,flask,python,windows,pycharm,pycharm+all,sublimetext,node

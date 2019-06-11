@@ -16,5 +16,6 @@ RUN poetry config settings.virtualenvs.create false && \
 
 COPY . /code
 COPY --from=node_build dist /code/app/assets/vendor
+COPY --from=node_build dist/static /code/app/static/
 
 CMD flask run -h 0.0.0.0 -p $PORT
