@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_assets import Environment
 
@@ -12,6 +13,9 @@ from app.utils import register_template_filters
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 db = SQLAlchemy()
+login_manager = LoginManager()
+login_manager.session_protection = 'strong'
+login_manager.login_view = 'usuarios.login'
 
 
 def create_app():
@@ -22,6 +26,8 @@ def create_app():
     config.init_app(app)
 
     db.init_app(app)
+
+    login_manager.init_app(app)
 
     register_template_filters(app)
 
@@ -53,6 +59,5 @@ def create_app():
 
     from app.navio import navio as navio_blueprint
     app.register_blueprint(navio_blueprint, url_prefix='/navios')
-
 
     return app
