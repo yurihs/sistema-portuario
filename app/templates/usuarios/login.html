@@ -9,6 +9,15 @@
         <div class="col-md-7 col-lg-5 col-xl-4 m-auto">
             <div class="card">
                 <div class="card-body p-4">
+                    {% set flashed_messages = get_flashed_messages() %}
+                    {% if flashed_messages %}
+                        <div class="text-danger font-weight-bold">
+                            Ops, ocorreu algo de errado!
+                        </div>
+                        {% for msg in get_flashed_messages() %}
+                        <p>{{ msg }}</p>
+                        {% endfor %}
+                    {% endif %}
                     <form method="post">
                         <div class="form-group">
                             <label for="email">E-mail</label>
