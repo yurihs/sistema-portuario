@@ -18,6 +18,16 @@
             <span class="d-none d-md-inline">Cadastrar usuário</span>
         </a>
     </div>
+    {% set success_flashed_messages = get_flashed_messages(category_filter=['success']) %}
+    {% if success_flashed_messages %}
+        <div class="card bg-success text-white font-weight-bold">
+            <div class="card-body">
+                {% for msg in success_flashed_messages %}
+                {{ msg }}<br>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
