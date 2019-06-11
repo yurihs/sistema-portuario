@@ -1,0 +1,51 @@
+{% extends 'layouts/base.html' %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="mx-auto mt-md-5 mb-md-4 logo">Sistema Portuário</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-7 col-lg-5 col-xl-4 m-auto">
+            <div class="card">
+                <div class="card-body p-4">
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input required type="email" name="email" id="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
+                            <input required type="password" name="senha" id="senha" class="form-control">
+                        </div>
+
+                        <div class="form-row mt-4">
+                            <div class="col"></div>
+                            <div class="col-sm-auto">
+                                <button type="submit" class="btn btn-success w-100">
+                                    <span data-feather="log-in" aria-hidden="true" class="mr-1"></span>
+                                    Entrar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mx-auto col-md-7 col-lg-5 col-xl-4 p-5">
+            <div class="row no-gutters flex-column flex-sm-row">
+                <div class="col-auto text-center mb-3 mb-sm-0">
+                    <span data-feather="info" aria-hidden="true" class="mr-3"></span>
+                </div>
+                <div class="col">
+                    <b>É necessário se autenticar para acessar o sistema.</b><br>
+                    Caso ainda não tenha um cadastro, requira-o com o administrador do sistema.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

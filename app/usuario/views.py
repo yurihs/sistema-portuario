@@ -26,3 +26,8 @@ def cadastrar():
 def editar(id_usuario):
     usuario = usuarios[id_usuario-1]
     return render_template('usuarios/editar.html', usuario=usuario)
+
+
+@usuario.route('/login', methods=['GET', 'POST'])
+def login():
+    return render_template('usuarios/login.html')
