@@ -60,4 +60,8 @@ def create_app():
     from app.navio import navio as navio_blueprint
     app.register_blueprint(navio_blueprint, url_prefix='/navios')
 
+    from app.viagem import viagem as navio_blueprint
+    app.register_blueprint(navio_blueprint, url_prefix='/viagens')
+
+
     return app

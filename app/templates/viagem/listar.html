@@ -1,0 +1,69 @@
+{% extends 'layouts/conteudo.html' %}
+
+{% set session = {
+    'user': {
+        'id': 1
+    }
+}%}
+
+{% block content %}
+    {% if viagens %}
+    <div class="d-flex align-items-baseline">
+        <h1 class="d-flex align-items-center">
+            <span class="badge badge-pill badge-secondary mr-2">{{ viagens|length }}</span>
+            Lista de viagens
+        </h1>
+        <a href="{{ url_for('viagem.cadastrar') }}" class="ml-auto btn btn-success">
+            <span data-feather="user-plus" aria-hidden="true"></span>
+            <span class="d-none d-md-inline">Cadastrar viagem</span>
+        </a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Navio</th>
+                <th scope="col">Porto de origem</th>
+                <th scope="col">Data de chegada/atracação</th>
+                <th scope="col">Data de liberação/saída</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for viagem in viagens %}
+                <tr>
+                    <td>
+                        <div class="d-flex flex-wrap align-items-center">
+                            {{ viagem.navio.nome }}
+                            
+                        </div>
+                        <div class="text-muted">
+                            {{ viagem.codigo }}
+                        </div>
+                    </td>
+                    <td>
+                        {{ viagem.porto_origem.nome }}
+                    </td>
+                    <td>
+                        <div>{{ viagem.data_chegada }}</div>
+                        <div>{{ viagem.data_atracacao }}</div>
+                    </td>
+                    <td>
+                        <div>{{ viagem.data_liberacao }}</div>
+                        <div>{{ viagem.data_saida }}</div>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('viagem.editar', id_viagem=viagem.id) }}" class="btn btn-sm">
+                            <span data-feather="edit" class="text-muted" aria-hidden="true"></span>
+                            <span class="sr-only">Editar</span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        Nenhuma viagem cadastrada!
+    {% endif %}
+{% endblock %}

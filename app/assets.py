@@ -10,11 +10,13 @@ app_js = Bundle(
     'usuario.js',
     'empresa.js',
     'relatorio.js',
+    'viagem.js',
     output='scripts/app.js'
 )
 
 vendor_css = Bundle(
     'bootstrap.css',
+    'flatpickr.css',
     output='styles/vendor.css'
 )
 
@@ -24,6 +26,8 @@ vendor_js = Bundle(
     'feather.js',
     'cleave.js',
     'chart.js',
+    'flatpickr.js',
+    'flatpickr-pt.js',
     filters=['rjsmin'],
     output='scripts/vendor.js'
 )

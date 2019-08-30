@@ -1,0 +1,88 @@
+{% extends 'layouts/conteudo.html' %}
+
+{% block content %}
+
+<h1 class="d-flex align-items-center">
+    <span class="badge badge-secondary mr-2">
+        <span data-feather="edit"></span>
+    </span>
+    Editar viagem
+</h1>
+
+<section>
+    <h1 class="sr-only">Formulário de edição de viagem</h1>
+    <div class="row mb-4">
+    <form method="post" class="col-md-10">
+        <div class="form-group form-row">
+            <label for="codigo" class="col-md-2 col-form-label">Código</label>
+            <div class="col-md-10">
+                <input required type="text" name="codigo" id="codigo" class="form-control" value="{{ viagem.codigo }}">
+            </div>
+        </div>
+        <div class="form-group form-row">
+            <label for="navios" class="col-md-2 col-form-label">Navio</label>
+            <div class="col-md-10">
+                <select name="navio" id="navio" class="custom-select">
+                    {% for navio in navios %}
+                        <option {{ 'selected' if navio.id == viagem.navio.id else '' }} value="{{ navio.id }}">{{ navio.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group form-row">
+            <label for="origem" class="col-md-2 col-form-label">Origem</label>
+            <div class="col-md-10">
+                <select name="porto_origem" id="porto_origem" class="custom-select">
+                    {% for porto in portos %}
+                        <option {{ 'selected' if porto.id == viagem.porto_origem.id else '' }} value="{{ porto.id }}">{{ porto.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <h2>Datas</h2>
+        <div class="form-row justify-content-center">
+            <div class="col-md form-group">
+                <label for="data_hora_chegada">
+                    <span data-feather="calendar" aria-hidden="true"></span>
+                    Chegada
+                </label>
+                <input type="text" class="form-control flatpickr-date-time" name="data_hora_chegada" value="{{ viagem.data_chegada }}">
+            </div>
+            <div class="col-md form-group">
+                <label for="data_hora_saida">
+                    <span data-feather="calendar" aria-hidden="true"></span>
+                    Saída
+                </label>
+                <input type="text" class="form-control flatpickr-date-time" name="data_hora_saida" value="{{ viagem.data_saida }}">
+            </div>
+        </div>
+        <div class="form-row justify-content-center">
+            <div class="col-md form-group">
+                <label for="data_hora_atracacao">
+                    <span data-feather="calendar" aria-hidden="true"></span>
+                    Atracação
+                </label>
+                <input type="text" class="form-control flatpickr-date-time" name="data_hora_atracacao" value="{{ viagem.data_atracacao }}">
+            </div>
+            <div class="col-md form-group">
+                <label for="data_hora_liberacao">
+                    <span data-feather="calendar" aria-hidden="true"></span>
+                    Liberação
+                </label>
+                <input type="text" class="form-control flatpickr-date-time" name="data_hora_liberacao" value="{{ viagem.data_liberacao }}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col"></div>
+            <div class="col-sm-auto">
+                <button type="submit" class="btn btn-success w-100">
+                    <span data-feather="check" aria-hidden="true" class="mr-1"></span>
+                    Cadastrar
+                </button>
+            </div>
+        </div>
+    </form>
+    </div>
+</section>
+{% endblock %}
