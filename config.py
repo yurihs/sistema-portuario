@@ -32,6 +32,8 @@ class TestingConfig(BaseConfig):
 
     SECRET_KEY = 'insecure-testing-secret-key'
 
+    WTF_CSRF_ENABLED = False
+
     @classmethod
     def init_app(cls, app):
         print('=> O APP ESTÁ EM MODO DE TESTE.')

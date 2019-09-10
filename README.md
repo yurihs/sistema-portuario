@@ -47,8 +47,12 @@ Pré-requisitos:
     mv dist/static/* app/static
     mv dist app/assets/vendor
     ```
-6. Executar o aplicativo Flask em modo de desenvolvimento:
+6. Inicializar o banco de dados
+   ```
+   FLASK_ENV=development python manage.py initdb
+   ```
+7. Executar o aplicativo Flask em modo de desenvolvimento:
    ```
    FLASK_ENV=development flask run
    ```
-7. Acessar http://localhost:5000/
+8. Acessar http://localhost:5000/

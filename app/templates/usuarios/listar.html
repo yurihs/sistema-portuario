@@ -56,7 +56,7 @@
                             {{ usuario.email }}
                         </div>
                     </td>
-                    <td>{{ usuario.cpf }}</td>
+                    <td>{{ usuario.cpf | formatar_cpf(pontuacao=True) }}</td>
                     <td>
                         <a href="{{ url_for('usuario.editar', id_usuario=usuario.id) }}" class="btn btn-sm">
                             <span data-feather="edit" class="text-muted" aria-hidden="true"></span>

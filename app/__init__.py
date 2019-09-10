@@ -8,14 +8,14 @@ from flask_assets import Environment
 from config import config_map
 
 from app import assets
-from app.utils import register_template_filters
+from app.utils import register_template_filters, register_context_processors
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
-login_manager.login_view = 'usuarios.login'
+login_manager.login_view = 'usuario.login'
 
 
 def create_app():
@@ -30,6 +30,7 @@ def create_app():
     login_manager.init_app(app)
 
     register_template_filters(app)
+    register_context_processors(app)
 
     assets_env = Environment(app)
     assets_env.append_path(os.path.join(basedir, 'assets/scripts'))
