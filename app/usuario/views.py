@@ -48,18 +48,25 @@ def cadastrar():
                 tipo_desc = 'Funcionário'
             tipo = TipoUsuario.query.filter_by(descricao=tipo_desc).first()
 
-            usuario = Usuario(
-                nome=form.nome.data,
-                email=form.email.data,
-                cpf=form.cpf.data,
-                hash_senha=form.senha.data,
-                tipo=tipo,
-            )
+            existente_email = Usuario.query.filter_by(email=form.email.data).first()
+            existente_cpf = Usuario.query.filter_by(cpf=form.cpf.data).first()
+            if existente_email is not None:
+                form.email.errors.append("Email já cadastrado!")
+            elif existente_cpf is not None:
+                form.cpf.errors.append("CPF já cadastrado!")
+            else:
+                usuario = Usuario(
+                    nome=form.nome.data,
+                    email=form.email.data,
+                    cpf=form.cpf.data,
+                    hash_senha=form.senha.data,
+                    tipo=tipo,
+                )
 
-            db.session.add(usuario)
-            db.session.commit()
-            flash('Usuário criado com sucesso.', 'success')
-            return redirect(url_for('usuario.listar_usuarios'))
+                db.session.add(usuario)
+                db.session.commit()
+                flash('Usuário criado com sucesso.', 'success')
+                return redirect(url_for('usuario.listar_usuarios'))
 
     return render_template('usuarios/cadastrar.html', form=form)
 

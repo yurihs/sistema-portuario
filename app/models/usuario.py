@@ -6,8 +6,8 @@ from app import db, login_manager
 class Usuario(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(256))
-    cpf = db.Column(db.String(11))
-    email = db.Column(db.String(256), index=True)
+    cpf = db.Column(db.String(11), unique=True)
+    email = db.Column(db.String(256), index=True, unique=True)
     hash_senha = db.Column(db.String(256))
     tipo_id = db.Column(db.Integer, db.ForeignKey('tipo_usuario.id'), nullable=False)
 
