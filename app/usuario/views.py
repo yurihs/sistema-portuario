@@ -77,8 +77,11 @@ def editar(id_usuario):
     if usuario is None:
         abort(404)
 
-
-    if not is_current_user('Administrador') and current_user.id != usuario.id:
+    if (
+        current_user.is_anonymous
+        or current_user.id != usuario.id
+        or not is_current_user('Administrador')
+    ):
         abort(403)
 
     form = UsuarioEditarForm()
