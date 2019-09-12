@@ -16,10 +16,12 @@
         <span class="menu-usuario__nome">{{ session.user }}</span>
     </button>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="menu_usuario">
-        <button type="button" class="dropdown-item">
-            <span data-feather="log-out"></span>
-            Sair
-        </button>
+        <a href="{{url_for('usuario.logout')}}">  
+            <button type="button" class="dropdown-item" >
+                <span data-feather="log-out" ></span>
+                Sair
+            </button>
+        </a>
     </div>
 </div>
 {% endif %}

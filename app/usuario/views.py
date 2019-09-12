@@ -1,5 +1,5 @@
 from flask import Blueprint, abort, flash, render_template, request, redirect, url_for
-from flask_login import login_user, current_user
+from flask_login import login_user, logout_user, current_user
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField
 from wtforms.fields.html5 import EmailField
@@ -112,3 +112,9 @@ def login():
         return redirect(url_for('usuario.listar_usuarios'))
 
     return render_template('usuarios/login.html')
+
+@usuario.route('/logout')
+def logout():
+    logout_user()
+    flash('Você foi deslogado com sucesso.')
+    return redirect(url_for('main.index'))
