@@ -5,7 +5,7 @@ from wtforms import StringField, IntegerField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired, Optional
 
-from app import db
+from app import db, bcrypt
 from app.models import Usuario, TipoUsuario
 from app.fields import CPFField
 from app.utils import is_current_user
@@ -59,7 +59,7 @@ def cadastrar():
                     nome=form.nome.data,
                     email=form.email.data,
                     cpf=form.cpf.data,
-                    hash_senha=form.senha.data,
+                    hash_senha=bcrypt.generate_password_hash(form.senha.data),
                     tipo=tipo,
                 )
 
@@ -116,7 +116,9 @@ def login():
             flash('Usuário inválido')
             return render_template('usuarios/login.html')
 
-        # TODO Autenticar (verificar senha)
+        if bcrypt.check_password_hash(usuario.hash_senha, senha) is False:
+            flash('Senha inválida')
+            return render_template('usuarios/login.html')
 
         login_user(usuario)
         return redirect(url_for('usuario.listar_usuarios'))
