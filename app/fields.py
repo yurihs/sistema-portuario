@@ -1,8 +1,8 @@
-from pycpfcnpj import cpfcnpj
+from pycpfcnpj import cpf, cnpj
 from wtforms.fields import Field
 from wtforms.widgets import TextInput
 
-from app.utils import formatar_cpf
+from app.utils import formatar_cpf, formatar_cnpj
 
 class CPFField(Field):
     widget = TextInput()
@@ -11,8 +11,22 @@ class CPFField(Field):
         return '' if self.data is None else formatar_cpf(self.data, pontuacao=True)
 
     def process_formdata(self, valuelist):
-        if valuelist and cpfcnpj.validate(valuelist[0]):
+        if valuelist and cpf.validate(valuelist[0]):
             self.data = formatar_cpf(valuelist[0], pontuacao=False)
         else:
             self.data = None
             raise ValueError('CPF inválido')
+
+
+class CNPJField(Field):
+    widget = TextInput()
+
+    def _value(self):
+        return '' if self.data is None else formatar_cnpj(self.data, pontuacao=True)
+
+    def process_formdata(self, valuelist):
+        if valuelist and cnpj.validate(valuelist[0]):
+            self.data = formatar_cnpj(valuelist[0], pontuacao=False)
+        else:
+            self.data = None
+            raise ValueError('CNPJ inválido')

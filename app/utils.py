@@ -32,6 +32,16 @@ def formatar_cpf(cpf, pontuacao=True):
         return ''.join(digitos)
 
 
+def formatar_cnpj(cnpj, pontuacao=True):
+    digitos = [x for x in cnpj if x.isdigit()]
+    if len(digitos) != 14:
+        raise ValueError('CNPJ inválido')
+    if pontuacao:
+        return '{}{}.{}{}{}.{}{}{}/{}{}{}{}-{}{}'.format(*digitos)
+    else:
+        return ''.join(digitos)
+
+
 def register_context_processors(app):
     @app.context_processor
     def _():
