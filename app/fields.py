@@ -1,6 +1,8 @@
 from pycpfcnpj import cpf, cnpj
 from wtforms.fields import Field
 from wtforms.widgets import TextInput
+from wtforms.widgets.html5 import TelInput
+import phonenumbers
 
 from app.utils import formatar_cpf, formatar_cnpj
 
@@ -30,3 +32,20 @@ class CNPJField(Field):
         else:
             self.data = None
             raise ValueError('CNPJ inválido')
+
+
+class TelefoneField(Field):
+    widget = TelInput()
+
+    def _value(self):
+        return '' if self.data is None else self.data
+
+    def process_formdata(self, valuelist):
+        if valuelist:
+            phone = phonenumbers.parse(valuelist[0], 'BR')
+            if phonenumbers.is_valid_number(phone):
+                self.data = phonenumbers.format_number(phone, phonenumbers.PhoneNumberFormat.NATIONAL)
+                return
+
+        self.data = None
+        raise ValueError('Telefone inválido')
