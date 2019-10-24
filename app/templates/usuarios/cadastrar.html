@@ -14,11 +14,11 @@
                         {{ form.csrf_token }}
                         <div class="form-group">
                             <label for="nome">Nome</label>
-                            <input required type="text" name="nome" id="nome" class="form-control">
+                            <input required type="text" name="nome" id="nome" class="form-control" value="{{form.nome.data or ''}}">
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail</label>
-                            <input required type="email" name="email" id="email" class="form-control">
+                            <input required type="email" name="email" id="email" class="form-control" value="{{form.email.data or ''}}">
                             {% if form.email.errors %}
                             <div class="invalid-feedback d-block">
                                 {% for error in form.email.errors %}{{ error }}<br>{% endfor %}
