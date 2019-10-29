@@ -5,7 +5,7 @@
 <div class="ml-auto pr-3">
 </div>
 
-{% if session.user %}
+{% if current_user.is_authenticated %}
 <div class="btn-group dropup align-self-stretch menu-usuario">
     <button id="menu_usuario" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span data-feather="user"></span>

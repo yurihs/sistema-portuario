@@ -1,11 +1,5 @@
 {% extends 'layouts/conteudo.html' %}
 
-{% set session = {
-    'user': {
-        'id': 1
-    }
-}%}
-
 {% block content %}
     {% if usuarios %}
     <div class="d-flex align-items-baseline">
@@ -42,13 +36,13 @@
                 <tr>
                     <td>
                         <div class="d-flex flex-wrap align-items-center">
-                            {{ usuario.nome }}
-                            {% if usuario.tipo == 'Administrador' %}
+                            {{ usuario.nome }}                           
+                            {% if usuario.tipo.descricao == 'Administrador' %}
                                 <span class="ml-2 badge badge-pill badge-info">Administrador</span>
-                            {% elif usuario.tipo == 'Funcionário' %}
+                            {% elif usuario.tipo.descricao == 'Funcionário' %}
                                 <span class="ml-2 badge badge-pill badge-secondary">Funcionário</span>
                             {% endif %}
-                            {% if usuario.id == session.user.id %}
+                            {% if usuario.id == current_user.id %}
                                 <span class="ml-2 text-muted">É você!</span>
                             {% endif %}
                         </div>
