@@ -1,0 +1,14 @@
+---
+
+version: '3'
+services:
+  backend:
+    build: backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - backend/.env
+    command: >
+      env PYTHONPATH=.. bash -c "python manage.py migrate &&
+      python manage.py loaddata essencial &&
+      python manage.py runserver --noreload 0.0.0.0:8000"

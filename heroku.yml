@@ -1,0 +1,11 @@
+---
+
+build:
+  docker:
+    web: backend/Dockerfile
+  config:
+    ENV: production
+release:
+  image: web
+  command:
+    - PYTHONPATH=.. python manage.py collectstatic --noinput
