@@ -104,6 +104,17 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 category = "main"
+description = "django-cors-headers is a Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)."
+name = "django-cors-headers"
+optional = false
+python-versions = ">=3.5"
+version = "3.1.1"
+
+[package.dependencies]
+Django = ">=1.11"
+
+[[package]]
+category = "main"
 description = "Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application."
 name = "django-environ"
 optional = false
@@ -441,7 +452,7 @@ python-versions = "*"
 version = "0.15.0"
 
 [metadata]
-content-hash = "eab4a2aaa595f73c377b440cb90aa8cd9517be0b99beac5a861e2031f7f029d4"
+content-hash = "1b756fc98cf4285e0a073abe958ee2d6b36937e7d0f58b5114990f7ea429fcc4"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -480,6 +491,10 @@ coreschema = [
 django = [
     {file = "Django-2.2.7-py3-none-any.whl", hash = "sha256:89c2007ca4fa5b351a51a279eccff298520783b713bf28efb89dfb81c80ea49b"},
     {file = "Django-2.2.7.tar.gz", hash = "sha256:16040e1288c6c9f68c6da2fe75ebde83c0a158f6f5d54f4c5177b0c1478c5b86"},
+]
+django-cors-headers = [
+    {file = "django-cors-headers-3.1.1.tar.gz", hash = "sha256:5762ec9c2d59f38c76828dc1d4308baca4bc0d3e1d6f217683e7a24a1c4611a3"},
+    {file = "django_cors_headers-3.1.1-py3-none-any.whl", hash = "sha256:ee02f4b699e9b6645602a46d0adb430ee940a1bf8df64f77e516f8d7711fee60"},
 ]
 django-environ = [
     {file = "django-environ-0.4.5.tar.gz", hash = "sha256:6c9d87660142608f63ec7d5ce5564c49b603ea8ff25da595fd6098f6dc82afde"},
