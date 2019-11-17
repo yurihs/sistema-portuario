@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Index from '@/components/Index'
-import AlterarUsuario from '@/components/usuarios/AlterarUsuario'
+// const AlterarUsuario = () => import('@/views/AlterarUsuario')
+
+import AlterarUsuario from '@/views/AlterarUsuario'
 
 Vue.use(Router)
 
@@ -11,14 +12,13 @@ export default new Router({
   hash: false,
   routes: [
     {
-      path: '/',
-      name: 'Index',
-      component: Index
-    },
-    {
       path: '/usuarios/:id/alterar',
       name: 'AlterarUsuario',
       component: AlterarUsuario
     },
+    {
+      path: '*',
+      redirect: '/'
+    }
   ]
 })
