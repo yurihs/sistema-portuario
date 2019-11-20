@@ -66,3 +66,12 @@ Pré-requisitos:
 10. Acessar a documentação da API em http://localhost:8000/api/swagger/  
    Usuário padrão: admin@example.com, 123
 
+
+## Testes
+
+Rodar os testes do backend:
+
+```
+cd backend
+PYTHONPATH=sistema_portuario poetry run pytest
+```
