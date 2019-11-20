@@ -1,6 +1,6 @@
 <template>
   <form>
-    <!-- <v-row>
+    <v-row>
       <v-col>
         <v-text-field
           name="Usuario"
@@ -37,7 +37,7 @@
           label="Sobrenome"
         ></v-text-field>
       </v-col>
-    </v-row> -->
+    </v-row>
 
     <v-row>
       <v-col cols="12" sm="6">
@@ -149,10 +149,11 @@ export default {
             })
             .then(() => {
               this.mensagem = "Alteração realizada com sucesso.";
+              this.falha = false;
             })
-            .catch(error => {
+            .catch(() => {
               this.falha = true;
-              this.mensagem = error;
+              this.mensagem = "Houve um erro no processamento. Verifique os dados e tente novamente.";
             });
           }
       })
