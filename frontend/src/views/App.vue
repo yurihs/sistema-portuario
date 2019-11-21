@@ -10,15 +10,19 @@
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title>
+              <router-link to='/'>Início</router-link>
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link>
           <v-list-item-action>
-            <v-icon>mdi-contact-mail</v-icon>
+            <v-icon>mdi-person</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
+            <v-list-item-title>
+              <router-link to='/usuarios/5/alterar'>Usuários</router-link>
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -60,6 +64,7 @@
 
 <script>
   export default {
+    name: 'App',
     props: {
       source: String,
     },
@@ -70,8 +75,9 @@
   }
 </script>
 
-<style scoped>
-  .text-center {
-    text-align: center;
+<style>
+  a { /* router-link */
+    color: #757575 !important;
+    text-decoration: none;
   }
 </style>
