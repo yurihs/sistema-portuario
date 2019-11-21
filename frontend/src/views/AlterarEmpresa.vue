@@ -132,6 +132,11 @@
       </v-col>
       
     </v-row>
+    <v-row>
+      <v-col cols="3">
+        <v-btn color="red" class="mr-4" @click="remover" :disabled="carregando ? true : false">Excluir Empresa</v-btn>
+      </v-col>
+    </v-row>
   </form>
   
 </template>
@@ -167,7 +172,7 @@ export default {
 
       // Mascaras
       cnpjMask: '##.###.###/####-##',
-      telefoneMask: '(##)#####-####',
+      telefoneMask: '##(##) ####-####',
       codigopostalMask: '#####-###',
     }
   },
@@ -199,8 +204,20 @@ export default {
             });
           }
       })
-    }
-  },
+    },
+  
+    remover() {
+      axios.delete('http://localhost:8000/api/empresas/'+ this.$route.params.id +'/') 
+      .then(() => {              
+        this.falha = false;
+        this.$router.push('Inicio')
+      })
+      .catch(() => {
+        this.falha = true;
+        this.mensagem = "Erro na Exclusão. Empresa relacionada com navios.";
+      });
+    },
+  },    
   
   mounted () {
     // Carrega informações do usuário
