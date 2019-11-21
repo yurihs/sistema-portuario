@@ -98,7 +98,6 @@
 <script>
 import { mask } from 'vue-the-mask';
 import axios from 'axios';
-// import Router from 'vue-router';
 
 export default {
   name: 'CadastrarUsuario',
@@ -142,7 +141,7 @@ export default {
             .then(() => {
               this.mensagem = "Cadastro realizado com sucesso.";
               this.falha = false;
-              setTimeout( () => this.$router.push('Home'), 2000);
+              setTimeout( () => this.$router.push('Inicio'), 2000);
               
             })
             .catch(() => {
