@@ -8,7 +8,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Navio')"
           label="Nome do Navio"
-        >{{ usuarioAntigo }}</v-text-field>
+        ></v-text-field>
       </v-col>
     </v-row>
     <v-row>
@@ -53,13 +53,13 @@
     </v-row>
         <v-row>
       <v-col cols="12" sm="6">
-        <v-text-field 
-          name="Empresa" 
-          v-model="empresa" 
-          v-validate="'required'"
-          :error-messages="errors.first('Empresa')"
+        <v-select
+          item-text="nome_fantasia"
+          item-value="id"
+          :items="empresas"
+          v-model="empresa"
           label="Empresa"
-        ></v-text-field>
+        ></v-select>
       </v-col>
       <v-col>
         <v-text-field 
@@ -121,10 +121,11 @@ export default {
   data() {
     return {
       // Carregamento API
-      usuarioAntigo: {},
+      navioAntigo: {},
       carregando: true,
       falha: false,
       mensagem: '',
+      
       
       // Campos formulario
       numero_imo: '',
@@ -136,6 +137,7 @@ export default {
       porte_bruto_toneladas: '',
       empresa: '',
       tipos_de_carga_suportados: '',
+      empresas: [],
 
       // Mascaras
       IMO: '#######',
@@ -192,10 +194,11 @@ export default {
 
     // Carrega grupos
     axios
-      .get('http://localhost:8000/api/grupos/')
+      .get('http://localhost:8000/api/empresas/')
       .then(response => {
-        this.grupos = response.data.map(function(grupo){
-          return grupo.nome;
+        this.empresas = response.data.map(function(empresa){
+          if(empresa)
+          return {'id': empresa.id, 'nome_fantasia': empresa.nome_fantasia};
         });
       })
       .catch(error => {
