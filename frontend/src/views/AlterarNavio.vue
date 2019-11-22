@@ -81,12 +81,20 @@
       </v-col>
       <v-col class="d-flex" cols="12" sm="6">
         <v-select
-          name="Carga" 
-          v-model="tipos_de_carga_suportados" 
-          :error-messages="errors.first('Carga')"
+          item-text="nome"
+          item-value="id"
+          name="Tipo de Carga"
+          v-model="tipos_de_carga_suportados"
+          :items="tipos_carga"
+          multiple
+          chips
+          persistent-hint
           label="Tipo de Carga"
+
+
         ></v-select>
       </v-col>
+
 
     </v-row>
     <v-row>
@@ -136,8 +144,9 @@ export default {
       numero_de_tripulantes: [],
       porte_bruto_toneladas: '',
       empresa: '',
-      tipos_de_carga_suportados: '',
+      tipos_de_carga_suportados: [],
       empresas: [],
+      tipos_carga: [],
 
       // Mascaras
       IMO: '#######',
@@ -155,7 +164,7 @@ export default {
               largura_metros: this.largura_metros,
               numero_de_tripulantes: this.numero_de_tripulantes,
               porte_bruto_toneladas: this.porte_bruto_toneladas,
-              empresa: this.empresa,
+              empresa: this.empresa.id,
               tipos_de_carga_suportados: this.tipos_de_carga_suportados
             })
             .then(() => {
@@ -171,7 +180,7 @@ export default {
     }
   },
   mounted () {
-    // Carrega informações do usuário
+    // Carrega informações do navio
     axios
       .get('http://localhost:8000/api/navios/'+ this.$route.params.numero_imo +'/')
       .then(response => {
@@ -184,7 +193,7 @@ export default {
         this.numero_de_tripulantes = this.navioAntigo.numero_de_tripulantes;
         this.porte_bruto_toneladas = this.navioAntigo.porte_bruto_toneladas;
         this.empresa = this.navioAntigo.empresa;
-        this.tipos_de_carga_suportados = this.navioAntigo.tipos_de_carga_suportados;
+        this.tipos_de_carga_suportados = this.navioAntigo.tipos_de_carga_suportados.map(x => x.id);
       })
       .catch(error => {
         this.falha = true;
@@ -192,13 +201,28 @@ export default {
       })
       .finally(() => this.carregando = false)
 
-    // Carrega grupos
+    // Carrega empresas
     axios
       .get('http://localhost:8000/api/empresas/')
       .then(response => {
         this.empresas = response.data.map(function(empresa){
           if(empresa)
           return {'id': empresa.id, 'nome_fantasia': empresa.nome_fantasia};
+        });
+      })
+      .catch(error => {
+        this.falha = true;
+        this.mensagem = error;
+      })
+      .finally(() => this.carregando = false)
+
+    // Carrega tipos de carga
+    axios
+      .get('http://localhost:8000/api/tipos-carga/')
+      .then(response => {
+        this.tipos_carga = response.data.map(function(tipo_carga){
+          if(tipo_carga)
+          return {'id': tipo_carga.id, 'nome': tipo_carga.nome + " " + tipo_carga.unidade};
         });
       })
       .catch(error => {
