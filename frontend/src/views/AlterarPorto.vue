@@ -1,65 +1,37 @@
 <template>
   <form>
-    <v-row>
-      <v-col cols="12" sm="6">
-        <v-text-field 
-          name="CNPJ" 
-          v-model="cnpj" 
-          v-mask="cnpjMask" 
-          v-validate="'required'"
-          :error-messages="errors.first('CNPJ')"
-          label="CNPJ"
-          :disabled="carregando ? true : false"
-        ></v-text-field>
-      </v-col>      
-    </v-row>
-    <v-row>
-        <v-col cols="12" sm="12">
-         <v-text-field 
-          name="Razaosocial" 
-          v-model="razao_social" 
-          v-validate="'required'"
-          :error-messages="errors.first('Razaosocial')"
-          label="Razão social"
-          :disabled="carregando ? true : false"
-        ></v-text-field>
-        </v-col>
-    </v-row>
-    <v-row>
-        <v-col cols="12" sm="12">
-         <v-text-field 
-          name="Nomefantasia" 
-          v-model="nome_fantasia" 
-          v-validate="'required'"
-          :error-messages="errors.first('Nomefantasia')"
-          label="Nome Fantasia"
-          :disabled="carregando ? true : false"
-        ></v-text-field>
-        </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="12" sm="6">
+      <v-row>
+     <v-col cols="12" sm="2">
         <v-text-field
-           name="Email" 
-          v-model="email" 
-          v-validate="'required|email'"
-          :error-messages="errors.first('Email')"
-          label="Email"
-          :disabled="carregando ? true : false"
+          name="Unlocode"
+          v-model="un_locode"
+          v-validate="'required'"
+          :error-messages="errors.first('Unlocode')"
+          label="UN/LOCODE"
         ></v-text-field>
       </v-col>
-    <v-col class="d-flex" cols="12" sm="6">
-        <v-text-field
-          name="Telefone" 
-          v-model="telefone" 
-          v-mask="telefoneMask" 
-          v-validate="'required'"
-          :error-messages="errors.first('Telefone')"
-          label="Telefone"
-          :disabled="carregando ? true : false"
-        ></v-text-field>
-    </v-col>
     </v-row>
+    <v-row>
+     <v-col cols="12" sm="8">
+        <v-text-field
+          name="NomePorto"
+          v-model="nomeporto"
+          v-validate="'required'"
+          :error-messages="errors.first('NomePorto')"
+          label="Nome Porto"
+        ></v-text-field>
+      </v-col>
+      <v-col cols="12" sm="4">
+        <v-text-field
+          name="CapacidadeTEU"
+          v-model="capacidadeteu"
+          v-validate="'required|integer'"
+          :error-messages="errors.first('CapacidadeTEU')"
+          label="TEU capacidade anual"
+        ></v-text-field>
+      </v-col>
+    </v-row>
+
     <v-row>
     <v-col class="d-flex" cols="12" sm="6">
         <v-text-field
@@ -107,14 +79,13 @@
         <v-text-field
           name="Codigopostal" 
           v-model="codigo_postal" 
-          v-mask="codigopostalMask"
           v-validate="'required'"
           :error-messages="errors.first('Codigopostal')"
           label="Código Postal"
           :disabled="carregando ? true : false"
         ></v-text-field>
     </v-col>   
-    </v-row>
+    </v-row>   
 
     <v-row>
       <v-col cols="3">
@@ -134,7 +105,7 @@
     </v-row>
     <v-row>
       <v-col cols="3">
-        <v-btn color="red" class="mr-4" @click="remover" :disabled="carregando ? true : false">Excluir Empresa</v-btn>
+        <v-btn color="red" class="mr-4" @click="remover" :disabled="carregando ? true : false">Excluir Porto</v-btn>
       </v-col>
     </v-row>
   </form>
@@ -146,53 +117,50 @@ import { mask } from 'vue-the-mask'
 import axios from 'axios';
 
 export default {
-  name: 'AlterarEmpresa',
+  name: 'AlterarPorto',
   directives: {
     mask,
   },
   data() {
     return {
       // Carregamento API
-      empresaAntigo: {},
+      portoAntigo: {},
       carregando: true,
       falha: false,
       mensagem: '',
       
       // Campos formulario
-      razao_social: '',
-      nome_fantasia: '',
-      cnpj: '',
-      email: '',
-      telefone: '',
+      un_locode: '',
+      nomeporto: '',
+      capacidadeteu: '',
       endereco: '',
       cidade: '',
       pais: '',
       codigo_postal: '',
-      regiao: '',
+      regiao: '',      
 
       // Mascaras
-      cnpjMask: '##.###.###/####-##',
-      telefoneMask: '##(##) ####-####',
-      codigopostalMask: '#####-###',
+      //codigopostalMask: '#####-###',
+
     }
   },
+  
   methods: {
     submit() {
       this.$validator.validateAll().then((result) => {
           if (result) {
-            axios.put('http://localhost:8000/api/empresas/'+ this.$route.params.id +'/', {
-              email: this.email,
-              cnpj: this.cnpj,
-              razao_social: this.razao_social,
-              nome_fantasia: this.nome_fantasia,
-              telefone: this.telefone,
+            axios.put('http://localhost:8000/api/portos/'+ this.$route.params.un_locode +'/',{
+              un_locode: this.un_locode,
+              nome: this.nomeporto,
+              capacidade_teus_anuais: this.capacidadeteu,
               endereco: {
                 cidade: this.cidade,
                 pais: this.pais,
                 codigo_postal: this.codigo_postal,
                 regiao: this.regiao,
                 linha_1: this.endereco
-              }
+              }            
+              
             })
             .then(() => {
               this.mensagem = "Alteração realizada com sucesso.";
@@ -207,14 +175,14 @@ export default {
     },
   
     remover() {
-      axios.delete('http://localhost:8000/api/empresas/'+ this.$route.params.id +'/') 
+      axios.delete('http://localhost:8000/api/portos/'+ this.$route.params.un_locode +'/') 
       .then(() => {              
         this.falha = false;
         this.$router.push('Inicio')
       })
       .catch(() => {
         this.falha = true;
-        this.mensagem = "Erro na Exclusão. Empresa relacionada com navios.";
+        this.mensagem = "Erro na Exclusão. Porto relacionado a viagens.";
       });
     },
   },    
@@ -222,21 +190,20 @@ export default {
   mounted () {
     // Carrega informações do usuário
     axios
-      .get('http://localhost:8000/api/empresas/'+ this.$route.params.id +'/')
+      .get('http://localhost:8000/api/portos/'+ this.$route.params.un_locode +'/')
       .then(response => {
-        this.empresaAntigo = response.data;
-        this.cnpj = this.empresaAntigo.cnpj;
-        this.razao_social = this.empresaAntigo.razao_social;
-        this.nome_fantasia = this.empresaAntigo.nome_fantasia;
-        this.email = this.empresaAntigo.email;
-        this.telefone = this.empresaAntigo.telefone;
-        if (this.empresaAntigo.endereco != null){
-          this.endereco = this.empresaAntigo.endereco.linha_1;
-          this.cidade = this.empresaAntigo.endereco.cidade;
-          this.pais = this.empresaAntigo.endereco.pais;
-          this.regiao = this.empresaAntigo.endereco.regiao;
-          this.codigo_postal = this.empresaAntigo.endereco.codigo_postal;
-        }
+        this.portoAntigo = response.data;
+        this.un_locode = this.portoAntigo.un_locode;
+        this.nomeporto = this.portoAntigo.nome;
+        this.capacidadeteu = this.portoAntigo.capacidade_teus_anuais
+        
+       if (this.portoAntigo.endereco != null){
+          this.endereco = this.portoAntigo.endereco.linha_1;
+          this.cidade = this.portoAntigo.endereco.cidade;
+          this.pais = this.portoAntigo.endereco.pais;
+          this.regiao = this.portoAntigo.endereco.regiao;
+          this.codigo_postal = this.portoAntigo.endereco.codigo_postal;
+        }       
       })
       .catch(error => {
         this.falha = true;
