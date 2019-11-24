@@ -8,7 +8,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Unlocode')"
           label="UN/LOCODE"
-          :disabled="carregando || desabilitar_campose"
+          :disabled="carregando || desabilitar_campos"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -20,7 +20,7 @@
           v-validate="'required'"
           :error-messages="errors.first('NomePorto')"
           label="Nome Porto"
-          :disabled="carregando || desabilitar_campose"
+          :disabled="carregando || desabilitar_campos"
         ></v-text-field>
       </v-col>
       <v-col cols="12" sm="4">
@@ -30,7 +30,7 @@
           v-validate="'required|integer'"
           :error-messages="errors.first('CapacidadeTEU')"
           label="TEU capacidade anual"
-          :disabled="carregando || desabilitar_campose"
+          :disabled="carregando || desabilitar_campos"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -43,7 +43,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Endereco')"
           label="Endereço"
-          :disabled="carregando || desabilitar_campose"
+          :disabled="carregando || desabilitar_campos"
         ></v-text-field>
       </v-col>
       <v-col class="d-flex" cols="12" sm="6">
@@ -53,7 +53,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Cidade')"
           label="Cidade"
-          :disabled="carregando || desabilitar_campose"
+          :disabled="carregando || desabilitar_campos"
         ></v-text-field>
     </v-col>      
     </v-row>
@@ -65,7 +65,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Pais')"
           label="País"
-          :disabled="carregando || desabilitar_campose"
+          :disabled="carregando || desabilitar_campos"
         ></v-text-field>
       </v-col>
       <v-col class="d-flex" cols="12" sm="4">
@@ -75,7 +75,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Regiao')"
           label="Região"
-          :disabled="carregando || desabilitar_campose"
+          :disabled="carregando || desabilitar_campos"
         ></v-text-field>
     </v-col>    
     <v-col class="d-flex" cols="12" sm="4">
@@ -85,7 +85,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Codigopostal')"
           label="Código Postal"
-          :disabled="carregando || desabilitar_campose"
+          :disabled="carregando || desabilitar_campos"
         ></v-text-field>
     </v-col>   
     </v-row>   
