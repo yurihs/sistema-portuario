@@ -5,6 +5,7 @@ import Inicio from '@/views/Inicio'
 import AlterarUsuario from '@/views/AlterarUsuario'
 import AlterarEmpresa from '@/views/AlterarEmpresa'
 import CadastrarUsuario from '@/views/CadastrarUsuario'
+import CadastrarTiposCarga from '@/views/CadastrarTiposCarga'
 import ListagemUsuarios from '@/views/ListagemUsuarios'
 
 Vue.use(Router)
@@ -37,6 +38,11 @@ export default new Router({
       path: '/usuarios/cadastrar',
       name: 'CadastrarUsuario',
       component: CadastrarUsuario
+    },
+    {
+      path: '/tipos-carga/cadastrar',
+      name: 'CadastrarTiposCargas',
+      component: CadastrarTiposCarga
     },
     {
       path: '*',
