@@ -7,7 +7,7 @@
     loading-text="Carregando usuários... Por favor aguarde"
   >
     <template v-slot:item="{ item }"> 
-      <router-link tag="tr" :to="'usuarios/'+item.id+'/alterar'">
+      <router-link tag="tr" :to="'/usuarios/'+item.id">
         <td>{{item.id}}</td>
         <td>{{item.email}}</td>
         <td>{{item.cpf}}</td>
