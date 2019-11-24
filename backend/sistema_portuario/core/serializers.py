@@ -62,6 +62,8 @@ class UsuarioSerializer(serializers.Serializer):
         usuario.groups.clear()
         usuario.groups.add(*Group.objects.filter(name__in=nomes_grupos))
 
+        usuario.save()
+
         return usuario
 
 
