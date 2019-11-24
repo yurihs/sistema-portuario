@@ -8,6 +8,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Unlocode')"
           label="UN/LOCODE"
+          :disabled="carregando || desabilitar_campose"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -19,6 +20,7 @@
           v-validate="'required'"
           :error-messages="errors.first('NomePorto')"
           label="Nome Porto"
+          :disabled="carregando || desabilitar_campose"
         ></v-text-field>
       </v-col>
       <v-col cols="12" sm="4">
@@ -28,6 +30,7 @@
           v-validate="'required|integer'"
           :error-messages="errors.first('CapacidadeTEU')"
           label="TEU capacidade anual"
+          :disabled="carregando || desabilitar_campose"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -40,7 +43,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Endereco')"
           label="Endereço"
-          :disabled="carregando ? true : false"
+          :disabled="carregando || desabilitar_campose"
         ></v-text-field>
       </v-col>
       <v-col class="d-flex" cols="12" sm="6">
@@ -50,7 +53,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Cidade')"
           label="Cidade"
-          :disabled="carregando ? true : false"
+          :disabled="carregando || desabilitar_campose"
         ></v-text-field>
     </v-col>      
     </v-row>
@@ -62,7 +65,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Pais')"
           label="País"
-          :disabled="carregando ? true : false"
+          :disabled="carregando || desabilitar_campose"
         ></v-text-field>
       </v-col>
       <v-col class="d-flex" cols="12" sm="4">
@@ -72,7 +75,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Regiao')"
           label="Região"
-          :disabled="carregando ? true : false"
+          :disabled="carregando || desabilitar_campose"
         ></v-text-field>
     </v-col>    
     <v-col class="d-flex" cols="12" sm="4">
@@ -82,14 +85,14 @@
           v-validate="'required'"
           :error-messages="errors.first('Codigopostal')"
           label="Código Postal"
-          :disabled="carregando ? true : false"
+          :disabled="carregando || desabilitar_campose"
         ></v-text-field>
     </v-col>   
     </v-row>   
 
     <v-row>
       <v-col cols="3">
-        <v-btn class="mr-4" @click="submit" :disabled="carregando ? true : false">Enviar</v-btn>
+        <v-btn class="mr-4" @click="submit" :disabled="carregando || desabilitar_campos">Enviar</v-btn>
       </v-col>
       <v-col>
         <v-alert
@@ -105,7 +108,7 @@
     </v-row>
     <v-row>
       <v-col cols="3">
-        <v-btn color="red" class="mr-4" @click="remover" :disabled="carregando ? true : false">Excluir Porto</v-btn>
+        <v-btn color="red" class="mr-4" @click="remover" :disabled="carregando || desabilitar_campos">Excluir Porto</v-btn>
       </v-col>
     </v-row>
   </form>
@@ -126,6 +129,7 @@ export default {
       // Carregamento API
       portoAntigo: {},
       carregando: true,
+      desabilitar_campos: false,
       falha: false,
       mensagem: '',
       
@@ -177,8 +181,10 @@ export default {
     remover() {
       axios.delete('http://localhost:8000/api/portos/'+ this.$route.params.un_locode +'/') 
       .then(() => {              
+        this.desabilitar_campos = true;
         this.falha = false;
-        this.$router.push('Inicio')
+        this.mensagem = "Porto removido com sucesso.";
+        setTimeout( () => this.$router.push('Inicio'), 2000);
       })
       .catch(() => {
         this.falha = true;
