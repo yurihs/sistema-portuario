@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="app">
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -10,15 +10,19 @@
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title>
+              <router-link to='/'>Início</router-link>
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link>
           <v-list-item-action>
-            <v-icon>mdi-contact-mail</v-icon>
+            <v-icon>mdi-person</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
+            <v-list-item-title>
+              <router-link to='/usuarios'>Usuários</router-link>
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link>
@@ -68,6 +72,7 @@
 
 <script>
   export default {
+    name: 'App',
     props: {
       source: String,
     },
@@ -78,8 +83,9 @@
   }
 </script>
 
-<style scoped>
-  .text-center {
-    text-align: center;
+<style>
+  a { /* router-link */
+    color: #757575 !important;
+    text-decoration: none;
   }
 </style>

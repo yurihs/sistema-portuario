@@ -6,7 +6,7 @@
       v-validate="'required'"
       :error-messages="errors.first('Usuario')"
       label="Nome de acesso"
-    >{{ usuarioAntigo }}</v-text-field>
+    ></v-text-field>
     <v-row>
      <v-col cols="12" sm="6">
         <v-text-field
@@ -36,7 +36,7 @@
           v-validate="'required|email'"
           :error-messages="errors.first('Email')"
           label="Email"
-          :disabled="carregando ? true : false"
+          :disabled="carregando"
         ></v-text-field>
       </v-col>
       <v-col>
@@ -47,21 +47,21 @@
           v-validate="'required'"
           :error-messages="errors.first('CPF')"
           label="CPF"
-          :disabled="carregando ? true : false"
+          :disabled="carregando"
         ></v-text-field>
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="12" sm="6">
         <v-text-field
-          name="senha"
+          name="Senha"
           v-model="senha"
           v-validate="'required|min:6'"
-          :error-messages="errors.first('senha')"
+          :error-messages="errors.first('Senha')"
           type="password"
           label="Senha"
           counter
-          :disabled="carregando ? true : false"
+          :disabled="carregando"
         ></v-text-field>
       </v-col>
       <v-col class="d-flex" cols="12" sm="6">
@@ -71,13 +71,13 @@
           v-validate="'required'"
           :items="grupos"
           label="Grupo"
-          :disabled="carregando ? true : false"
+          :disabled="carregando"
         ></v-select>
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="3">
-        <v-btn class="mr-4" @click="submit" :disabled="carregando ? true : false">Enviar</v-btn>
+        <v-btn class="mr-4" @click="submit" :disabled="carregando">Enviar</v-btn>
       </v-col>
       <v-col>
         <v-alert
@@ -92,22 +92,21 @@
       
     </v-row>
   </form>
-  
+      
 </template>
 
 <script>
-import { mask } from 'vue-the-mask'
+import { mask } from 'vue-the-mask';
 import axios from 'axios';
 
 export default {
-  name: 'AlterarUsuario',
+  name: 'CadastrarUsuario',
   directives: {
     mask,
   },
   data() {
     return {
       // Carregamento API
-      usuarioAntigo: {},
       carregando: true,
       falha: false,
       mensagem: '',
@@ -130,15 +129,20 @@ export default {
     submit() {
       this.$validator.validateAll().then((result) => {
           if (result) {
-            axios.put('http://localhost:8000/api/usuarios/'+ this.$route.params.id +'/', {
+            axios.post('http://localhost:8000/api/usuarios/', {
               email: this.email,
               cpf: this.cpfValue,
               grupo: this.grupo,
-              password: this.senha
+              password: this.senha,
+              usuario: this.usuario,
+              primeiroNome: this.primeiroNome,
+              sobrenome: this.sobrenome
             })
             .then(() => {
-              this.mensagem = "Alteração realizada com sucesso.";
+              this.mensagem = "Cadastro realizado com sucesso.";
               this.falha = false;
+              setTimeout( () => this.$router.push('Inicio'), 2000);
+              
             })
             .catch(() => {
               this.falha = true;
@@ -149,21 +153,6 @@ export default {
     }
   },
   mounted () {
-    // Carrega informações do usuário
-    axios
-      .get('http://localhost:8000/api/usuarios/'+ this.$route.params.id +'/')
-      .then(response => {
-        this.usuarioAntigo = response.data;
-        this.email = this.usuarioAntigo.email;
-        this.cpfValue = this.usuarioAntigo.cpf;
-        this.grupo = this.usuarioAntigo.grupo;
-      })
-      .catch(error => {
-        this.falha = true;
-        this.mensagem = error;
-      })
-      .finally(() => this.carregando = false)
-
     // Carrega grupos
     axios
       .get('http://localhost:8000/api/grupos/')
@@ -177,11 +166,11 @@ export default {
         this.mensagem = error;
       })
       .finally(() => this.carregando = false)
-
   }
 }
 
 </script>
 
 <style scoped>
+
 </style>
