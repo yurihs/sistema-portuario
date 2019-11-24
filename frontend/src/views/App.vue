@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="app">
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -21,7 +21,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
-              <router-link to='/usuarios/5/alterar'>Usuários</router-link>
+              <router-link to='/usuarios'>Usuários</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
