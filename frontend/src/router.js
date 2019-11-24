@@ -5,6 +5,7 @@ import Inicio from '@/views/Inicio'
 import AlterarUsuario from '@/views/AlterarUsuario'
 import AlterarEmpresa from '@/views/AlterarEmpresa'
 import CadastrarUsuario from '@/views/CadastrarUsuario'
+import ListagemUsuarios from '@/views/ListagemUsuarios'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/',
       name: 'Inicio',
       component: Inicio
+    },
+    {
+      path: '/usuarios',
+      name: 'ListagemUsuarios',
+      component: ListagemUsuarios
     },
     {
       path: '/usuarios/:id/alterar',
