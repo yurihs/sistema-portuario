@@ -95,7 +95,7 @@ export default {
   
     remover() {
       axios.delete('http://localhost:8000/api/tipos-carga/'+ this.$route.params.id +'/') 
-      .then(() => {              
+      .then(() => {
         this.bloquear_campos = true;
         this.falha = false;
         this.mensagem = "Remoção realizada com sucesso.";

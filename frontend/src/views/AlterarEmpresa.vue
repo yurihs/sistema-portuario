@@ -109,7 +109,7 @@
           v-model="codigo_postal" 
           v-mask="codigopostalMask"
           v-validate="'required'"
-          :error-messages="errors.first('Codigo_postal')"
+          :error-messages="errors.first('Codigopostal')"
           label="Código Postal"
           :disabled="carregando ? true : false"
         ></v-text-field>
