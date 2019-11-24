@@ -9,8 +9,11 @@ import ListagemUsuarios from '@/views/ListagemUsuarios'
 
 import AlterarEmpresa from '@/views/AlterarEmpresa'
 
+import AlterarNavio from '@/views/AlterarNavio'
+
 import CadastrarTiposCarga from '@/views/CadastrarTiposCarga'
 import AlterarTiposCarga from '@/views/AlterarTiposCarga'
+
 
 Vue.use(Router)
 
@@ -34,6 +37,9 @@ export default new Router({
       component: AlterarUsuario
     },
     {
+      path: '/navios/:numero_imo/alterar',
+      name: 'AlterarNavio',
+      component: AlterarNavio
       path: '/empresas/:id/alterar',
       name: 'AlterarEmpresa',
       component: AlterarEmpresa
