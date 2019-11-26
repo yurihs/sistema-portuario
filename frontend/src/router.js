@@ -12,6 +12,7 @@ import AlterarEmpresa from '@/views/AlterarEmpresa'
 import AlterarPorto from '@/views/AlterarPorto'
 
 import AlterarNavio from '@/views/AlterarNavio'
+import CadastrarNavio from '@/views/CadastrarNavio'
 
 import CadastrarTiposCarga from '@/views/CadastrarTiposCarga'
 import AlterarTiposCarga from '@/views/AlterarTiposCarga'
@@ -75,6 +76,11 @@ export default new Router({
       path: '/portos/:un_locode/alterar',
       name: 'AlterarPorto',
       component: AlterarPorto
+    },
+    {
+      path: '/navios/cadastrar',
+      name: 'CadastrarNavio',
+      component: CadastrarNavio
     },
     
     {
