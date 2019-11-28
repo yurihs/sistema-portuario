@@ -6,8 +6,14 @@
     class="elevation-1"
     loading-text="Carregando usuários... Por favor aguarde"
   >
+  <template v-slot:top>
+      <v-toolbar flat color="white">
+        <v-spacer></v-spacer>
+        <v-btn color="primary" dark class="mb-2" :to="'/usuarios/cadastrar'">Novo usuário</v-btn>
+      </v-toolbar>
+  </template>
     <template v-slot:item="{ item }"> 
-      <router-link tag="tr" :to="'usuarios/'+item.id+'/alterar'">
+      <router-link tag="tr" :to="'/usuarios/'+item.id">
         <td>{{item.id}}</td>
         <td>{{item.email}}</td>
         <td>{{item.cpf}}</td>
@@ -33,6 +39,8 @@ export default {
     }
   },
   mounted () {
+    this.$emit('message', 'Usuários');
+
     axios
       .get('http://localhost:8000/api/usuarios/')
       .then(response => {
@@ -41,13 +49,16 @@ export default {
       .catch(error => {
         this.falha = true;
         this.mensagem = error;
-      })
-  }
+      });
+  },
 }
 </script>
 
 <style scoped>
   tr {
     cursor: pointer;
+  }
+  v-btn, a{
+    color: white !important;
   }
 </style>

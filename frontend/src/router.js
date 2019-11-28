@@ -6,7 +6,7 @@ import Inicio from '@/views/Inicio'
 import CadastrarUsuario from '@/views/CadastrarUsuario'
 import AlterarUsuario from '@/views/AlterarUsuario'
 import ListagemUsuarios from '@/views/ListagemUsuarios'
-
+import ExibirUsuario from '@/views/ExibirUsuario'
 import AlterarEmpresa from '@/views/AlterarEmpresa'
 
 import AlterarPorto from '@/views/AlterarPorto'
@@ -34,7 +34,19 @@ export default new Router({
       name: 'ListagemUsuarios',
       component: ListagemUsuarios
     },
+
+    {
+      path: '/usuarios/cadastrar',
+      name: 'CadastrarUsuario',
+      component: CadastrarUsuario
+    },
     
+    {
+      path: '/usuarios/:id',
+      name: 'ExibirUsuario',
+      component: ExibirUsuario
+    },
+
     {
       path: '/usuarios/:id/alterar',
       name: 'AlterarUsuario',
@@ -53,11 +65,6 @@ export default new Router({
       component: AlterarEmpresa
     },
     
-    {
-      path: '/usuarios/cadastrar',
-      name: 'CadastrarUsuario',
-      component: CadastrarUsuario
-    },
     
     {
       path: '/tipos-carga/cadastrar',
