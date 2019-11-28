@@ -22,6 +22,8 @@ export default {
     }
   },
   mounted () {
+    this.$emit('message', 'Usuários');
+    
     axios.get('http://localhost:8000/api/usuarios/'+ this.$route.params.id +'/')
       .then(response => {
         this.usuario = response.data;

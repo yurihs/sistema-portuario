@@ -34,6 +34,12 @@ export default new Router({
       name: 'ListagemUsuarios',
       component: ListagemUsuarios
     },
+
+    {
+      path: '/usuarios/cadastrar',
+      name: 'CadastrarUsuario',
+      component: CadastrarUsuario
+    },
     
     {
       path: '/usuarios/:id',
@@ -59,11 +65,6 @@ export default new Router({
       component: AlterarEmpresa
     },
     
-    {
-      path: '/usuarios/cadastrar',
-      name: 'CadastrarUsuario',
-      component: CadastrarUsuario
-    },
     
     {
       path: '/tipos-carga/cadastrar',
