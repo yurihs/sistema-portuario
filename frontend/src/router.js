@@ -48,14 +48,14 @@ export default new Router({
       component: AlterarTiposCarga
     },
     {
-      path: '/portos/:un_locode/alterar',
-      name: 'AlterarPorto',
-      component: AlterarPorto
-    },
-    {
       path: '/portos/cadastrar',
       name: 'CadastrarPorto',
       component: CadastrarPorto
+    },
+    {
+      path: '/portos/:un_locode/alterar',
+      name: 'AlterarPorto',
+      component: AlterarPorto
     },
     {
       path: '*',
