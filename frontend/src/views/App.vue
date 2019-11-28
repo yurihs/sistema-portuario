@@ -5,26 +5,30 @@
       app
     >
       <v-list dense>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>
-              <router-link to='/'>Início</router-link>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-person</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>
-              <router-link to='/usuarios'>Usuários</router-link>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <router-link to='/'>
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                Início
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
+        <router-link to='/usuarios'>
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon>mdi-account-multiple</v-icon>
+            </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>
+                  Usuários
+                </v-list-item-title>
+              </v-list-item-content>
+          </v-list-item>
+        </router-link>
         <v-list-item link>
           <v-list-item-action>
             <v-icon>mdi-ferry</v-icon>
@@ -42,7 +46,7 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>{{ this.appTitle }}</v-toolbar-title>
     </v-app-bar>
 
     <v-content>
@@ -55,7 +59,7 @@
           justify="center"
         >
           <v-container>
-            <router-view>
+            <router-view @message="setTitle">
             </router-view>
           </v-container>
         </v-row>
@@ -76,10 +80,15 @@
     props: {
       source: String,
     },
-
     data: () => ({
       drawer: null,
+      appTitle: 'Application'
     }),
+    methods: {
+      setTitle(variable){
+        this.appTitle = variable;
+      }
+    }
   }
 </script>
 
