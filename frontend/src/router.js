@@ -8,10 +8,12 @@ import AlterarUsuario from '@/views/AlterarUsuario'
 import ListagemUsuarios from '@/views/ListagemUsuarios'
 
 import AlterarEmpresa from '@/views/AlterarEmpresa'
+import ExibirEmpresa from '@/views/ExibirEmpresa'
 
 import AlterarPorto from '@/views/AlterarPorto'
 
 import AlterarNavio from '@/views/AlterarNavio'
+import ExibirNavio  from '@/views/ExibirNavio'
 
 import CadastrarTiposCarga from '@/views/CadastrarTiposCarga'
 import AlterarTiposCarga from '@/views/AlterarTiposCarga'
@@ -46,11 +48,21 @@ export default new Router({
       name: 'AlterarNavio',
       component: AlterarNavio,
     },
+    {
+      path: '/navios/:numero_imo',
+      name: 'ExibirNavio',
+      component: ExibirNavio
+    },
     
     {
       path: '/empresas/:id/alterar',
       name: 'AlterarEmpresa',
       component: AlterarEmpresa
+    },
+    {
+      path: '/empresas/:id',
+      name: 'ExibirEmpresa',
+      component: ExibirEmpresa
     },
     
     {
