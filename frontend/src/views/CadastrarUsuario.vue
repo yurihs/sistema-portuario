@@ -153,6 +153,9 @@ export default {
     }
   },
   mounted () {
+    this.$emit('message', 'Usuários');
+
+
     // Carrega grupos
     axios
       .get('http://localhost:8000/api/grupos/')

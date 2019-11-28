@@ -149,6 +149,8 @@ export default {
     }
   },
   mounted () {
+    this.$emit('message', 'Usuários');
+
     // Carrega informações do usuário
     axios
       .get('http://localhost:8000/api/usuarios/'+ this.$route.params.id +'/')

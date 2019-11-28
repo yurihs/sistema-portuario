@@ -8,6 +8,7 @@
           v-validate="'required'"
           :error-messages="errors.first('Tipocarga')"
           label="Tipo carga"
+          :disabled="bloquear_campos"
         ></v-text-field>
       </v-col>
       <v-col cols="12" sm="4">
@@ -17,6 +18,7 @@
           v-validate="'required'"
           :error-messages="errors.first('UnidadeTipo')"
           label="Simbolo de Unidade de Medida"
+          :disabled="bloquear_campos"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -59,6 +61,7 @@ export default {
     return {
       // Carregamento API
       tipoAntigo: {},
+      bloquear_campos: false,
       carregando: true,
       falha: false,
       mensagem: '',
@@ -92,13 +95,15 @@ export default {
   
     remover() {
       axios.delete('http://localhost:8000/api/tipos-carga/'+ this.$route.params.id +'/') 
-      .then(() => {              
+      .then(() => {
+        this.bloquear_campos = true;
         this.falha = false;
-        this.$router.push('Inicio')
+        this.mensagem = "Remoção realizada com sucesso.";
+        setTimeout( () => this.$router.push('Inicio'), 2000);
       })
       .catch(() => {
         this.falha = true;
-        this.mensagem = "Erro na Exclusão. Tipo de Carga relacionada a navios e/ou viagens.";
+        this.mensagem = "Erro na Exclusão. Tipo de Carga inexistente ou relacionada a navios e/ou viagens.";
       });
     },
   },    

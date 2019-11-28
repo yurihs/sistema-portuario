@@ -4,7 +4,10 @@
 
 <script>
 export default {
-    name: 'Início',
+  name: 'Início',
+  mounted () {
+    this.$emit('message', 'Início');
+  }
 }
 </script>
 
