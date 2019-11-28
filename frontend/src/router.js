@@ -13,6 +13,8 @@ import AlterarPorto from '@/views/AlterarPorto'
 
 import AlterarNavio from '@/views/AlterarNavio'
 
+import ListagemNavio from '@/views/ListagemNavio'
+
 import CadastrarTiposCarga from '@/views/CadastrarTiposCarga'
 import AlterarTiposCarga from '@/views/AlterarTiposCarga'
 
@@ -41,6 +43,12 @@ export default new Router({
       component: AlterarUsuario
     },
     
+    {
+      path: '/navios/',
+      name: 'ListagemNavio',
+      component: ListagemNavio,
+    },
+
     {
       path: '/navios/:numero_imo/alterar',
       name: 'AlterarNavio',

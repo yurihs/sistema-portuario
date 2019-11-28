@@ -113,6 +113,11 @@
       </v-col>
       
     </v-row>
+      <v-row>
+      <v-col cols="3">
+        <v-btn color="red" class="mr-4" @click="remover" :disabled="carregando || desabilitar_campos">Excluir Navio</v-btn>
+      </v-col>
+    </v-row>
   </form>
   
 </template>
@@ -153,6 +158,20 @@ export default {
     }
   },
   methods: {
+
+    remover() {
+      axios.delete('http://localhost:8000/api/navios/'+ this.$route.params.numero_imo +'/') 
+      .then(() => {              
+        this.desabilitar_campos = true;
+        this.falha = false;
+        this.mensagem = "Navio removido com sucesso.";
+        setTimeout( () => this.$router.push('Inicio'), 2000);
+      })
+      .catch(() => {
+        this.falha = true;
+        this.mensagem = "Erro na Exclusão. Navio relacionado a viagens.";
+      });
+    },
     submit() {
       this.$validator.validateAll().then((result) => {
           if (result) {
@@ -179,6 +198,7 @@ export default {
       })
     }
   },
+
   mounted () {
     // Carrega informações do navio
     axios
