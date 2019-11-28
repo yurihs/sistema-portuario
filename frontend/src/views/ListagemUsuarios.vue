@@ -30,6 +30,8 @@ export default {
   name: 'ListagemUsuarios',
   data(){
     return {
+      auth_token_access: localStorage.auth_token,
+
       usuarios: [],
       headers: [
         {text: 'ID', value: 'id'},
@@ -42,7 +44,11 @@ export default {
     this.$emit('message', 'Usuários');
 
     axios
-      .get('http://localhost:8000/api/usuarios/')
+      .get('http://localhost:8000/api/usuarios/', {
+        headers: {
+          Authorization: 'Bearer ' + this.auth_token_access
+        }
+      })
       .then(response => {
         this.usuarios = response.data;
       })
