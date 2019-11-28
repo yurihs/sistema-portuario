@@ -9,6 +9,7 @@ import ListagemUsuarios from '@/views/ListagemUsuarios'
 import ExibirUsuario from '@/views/ExibirUsuario'
 
 import AlterarEmpresa from '@/views/AlterarEmpresa'
+import ListagemEmpresas from '@/views/ListagemEmpresas'
 
 import CadastrarTiposCarga from '@/views/CadastrarTiposCarga'
 import AlterarTiposCarga from '@/views/AlterarTiposCarga'
@@ -70,6 +71,11 @@ export default new Router({
       component: AlterarEmpresa
     },
     
+    {
+      path: '/empresas',
+      name: 'ListagemEmpresas',
+      component: ListagemEmpresas
+    },
     
     {
       path: '/tipos-carga/cadastrar',
