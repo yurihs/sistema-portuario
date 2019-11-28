@@ -90,6 +90,11 @@
         </v-alert>  
       </v-col>
       
+    </v-row>  
+    <v-row>
+      <v-col cols="3">
+        <v-btn color="red" class="mr-4" @click="remover" :disabled="carregando || desabilitar_campos">Excluir Usuário</v-btn>
+      </v-col>
     </v-row>
   </form>
   
@@ -127,6 +132,20 @@ export default {
     }
   },
   methods: {
+    remover() {
+      axios.delete('http://localhost:8000/api/usuarios/'+ this.$route.params.id +'/') 
+      .then(() => {              
+        this.desabilitar_campos = true;
+        this.falha = false;
+        this.mensagem = "Usuário removido com sucesso.";
+        setTimeout( () => this.$router.push('Inicio'), 2000);
+      })
+      .catch(() => {
+        this.falha = true;
+        this.mensagem = "Erro na Exclusão.";
+      });
+    },
+  
     submit() {
       this.$validator.validateAll().then((result) => {
           if (result) {

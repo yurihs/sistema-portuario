@@ -20,7 +20,10 @@ import CadastrarPorto from '@/views/CadastrarPorto'
 
 import AlterarNavio from '@/views/AlterarNavio'
 import CadastrarNavio from '@/views/CadastrarNavio'
+import ListagemNavio from '@/views/ListagemNavio'
 
+import CadastrarTiposCarga from '@/views/CadastrarTiposCarga'
+import AlterarTiposCarga from '@/views/AlterarTiposCarga'
 
 
 Vue.use(Router)
@@ -59,6 +62,12 @@ export default new Router({
       component: AlterarUsuario
     },
     
+    {
+      path: '/navios/',
+      name: 'ListagemNavio',
+      component: ListagemNavio,
+    },
+
     {
       path: '/navios/:numero_imo/alterar',
       name: 'AlterarNavio',
