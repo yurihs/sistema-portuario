@@ -12,6 +12,7 @@ import ExibirUsuario from '@/views/ExibirUsuario'
 
 import CadastrarEmpresa from '@/views/CadastrarEmpresa'
 import AlterarEmpresa from '@/views/AlterarEmpresa'
+import ExibirEmpresa from '@/views/ExibirEmpresa'
 import ListagemEmpresas from '@/views/ListagemEmpresas'
 
 import CadastrarTiposCarga from '@/views/CadastrarTiposCarga'
@@ -21,6 +22,8 @@ import ListagemTiposCarga from '@/views/ListagemTiposCarga'
 import AlterarPorto from '@/views/AlterarPorto'
 import CadastrarPorto from '@/views/CadastrarPorto'
 
+import AlterarNavio from '@/views/AlterarNavio'
+import ExibirNavio  from '@/views/ExibirNavio'
 
 import AlterarNavio from '@/views/AlterarNavio'
 import CadastrarNavio from '@/views/CadastrarNavio'
@@ -80,6 +83,10 @@ export default new Router({
       name: 'AlterarNavio',
       component: AlterarNavio,
     },
+    {
+      path: '/navios/:numero_imo',
+      name: 'ExibirNavio',
+      component: ExibirNavio
 
     {
       path: '/empresas/cadastrar',
@@ -91,6 +98,11 @@ export default new Router({
       path: '/empresas/:id/alterar',
       name: 'AlterarEmpresa',
       component: AlterarEmpresa
+    },
+    {
+      path: '/empresas/:id',
+      name: 'ExibirEmpresa',
+      component: ExibirEmpresa
     },
     
     {
