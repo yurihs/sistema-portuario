@@ -20,25 +20,27 @@
             <p><b>Telefone:</b> {{ empresa.telefone }}</p>
         </v-col>
     </v-row>
-     <v-row>
-        <v-col cols="6">
-             <p><b>Logradouro:</b> {{ empresa.endereco.linha_1 }}</p>
-        </v-col>
-        <v-col cols="6">
-             <p><b>Codigo Postal:</b> {{ empresa.endereco.codigo_postal }}</p>
-         </v-col>
-    </v-row>
-    <v-row>
-        <v-col cols="4">
-            <p><b>Cidade:</b> {{ empresa.endereco.cidade }}</p>
-        </v-col>
-        <v-col cols="4">
-            <p><b>Região:</b> {{ empresa.endereco.regiao }}</p>
-        </v-col>
-        <v-col cols="4">
-            <p><b>País:</b> {{ empresa.endereco.pais }}</p>
-        </v-col>
-    </v-row>
+    <div v-if="empresa.endereco">
+      <v-row>
+          <v-col cols="6">
+              <p><b>Logradouro:</b> {{ empresa.endereco.linha_1 }}</p>
+          </v-col>
+          <v-col cols="6">
+              <p><b>Codigo Postal:</b> {{ empresa.endereco.codigo_postal }}</p>
+          </v-col>
+      </v-row>
+      <v-row>
+          <v-col cols="4">
+              <p><b>Cidade:</b> {{ empresa.endereco.cidade }}</p>
+          </v-col>
+          <v-col cols="4">
+              <p><b>Região:</b> {{ empresa.endereco.regiao }}</p>
+          </v-col>
+          <v-col cols="4">
+              <p><b>País:</b> {{ empresa.endereco.pais }}</p>
+          </v-col>
+      </v-row>
+    </div>
 
     
     

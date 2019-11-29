@@ -53,33 +53,35 @@
                 </v-row>
             </v-col>
         </v-row>
-        <v-row>
-            <v-col offset-md="1">
-                <v-row>
-                    <v-col cols="6">
-                        <p><b>Logradouro:</b> {{ navio.empresa.endereco.linha_1}}</p>
-                     </v-col>
-                    <v-col cols="3">
-                        <p><b>Cidade:</b> {{ navio.empresa.endereco.cidade }}</p>
-                    </v-col>
-                    <v-col cols="3">
-                        <p><b>Região:</b> {{ navio.empresa.endereco.regiao }}</p>
-                    </v-col>                     
-                </v-row>
-            </v-col>
-        </v-row>
-        <v-row>
-            <v-col offset-md="1">
-                <v-row>
-                    <v-col cols="6">
-                        <p><b>País:</b> {{ navio.empresa.endereco.pais}}</p>
-                     </v-col>
-                    <v-col cols="6">
-                        <p><b>Codigo Postal:</b> {{ navio.empresa.endereco.codigo_postal }}</p>
-                    </v-col>                   
-                </v-row>
-            </v-col>
-        </v-row> 
+        <div v-if="navio.empresa.endereco">
+            <v-row>
+                <v-col offset-md="1">
+                    <v-row>
+                        <v-col cols="6">
+                            <p><b>Logradouro:</b> {{ navio.empresa.endereco.linha_1}}</p>
+                        </v-col>
+                        <v-col cols="3">
+                            <p><b>Cidade:</b> {{ navio.empresa.endereco.cidade }}</p>
+                        </v-col>
+                        <v-col cols="3">
+                            <p><b>Região:</b> {{ navio.empresa.endereco.regiao }}</p>
+                        </v-col>                     
+                    </v-row>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col offset-md="1">
+                    <v-row>
+                        <v-col cols="6">
+                            <p><b>País:</b> {{ navio.empresa.endereco.pais}}</p>
+                        </v-col>
+                        <v-col cols="6">
+                            <p><b>Codigo Postal:</b> {{ navio.empresa.endereco.codigo_postal }}</p>
+                        </v-col>                   
+                    </v-row>
+                </v-col>
+            </v-row> 
+        </div>
     <hr>
     <h3>Tipos de Cargas:</h3>
         <v-row>

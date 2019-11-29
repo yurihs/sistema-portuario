@@ -29,14 +29,57 @@
               </v-list-item-content>
           </v-list-item>
         </router-link>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-ferry</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Navios</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <router-link to='/navios'>
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon>mdi-ferry</v-icon>
+            </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>
+                  Navios
+                </v-list-item-title>
+              </v-list-item-content>
+          </v-list-item>
+        </router-link>
+        <router-link to='/tipos-carga'>
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon>mdi-package-variant-closed</v-icon>
+            </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>
+                  Tipos de Carga
+                </v-list-item-title>
+              </v-list-item-content>
+          </v-list-item>
+        </router-link>
+
+        <router-link to='/empresas'>
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon>mdi-home-city</v-icon>
+            </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>
+                  Empresas
+                </v-list-item-title>
+              </v-list-item-content>
+          </v-list-item>
+        </router-link>
+
+        <router-link to='/portos'>
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon>mdi-warehouse</v-icon>
+            </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>
+                  Portos
+                </v-list-item-title>
+              </v-list-item-content>
+          </v-list-item>
+        </router-link>
+
         <v-list-item link v-on:click="logout()">
           <v-list-item-action>
             <v-icon></v-icon>

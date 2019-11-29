@@ -24,8 +24,6 @@ import CadastrarPorto from '@/views/CadastrarPorto'
 
 import AlterarNavio from '@/views/AlterarNavio'
 import ExibirNavio  from '@/views/ExibirNavio'
-
-import AlterarNavio from '@/views/AlterarNavio'
 import CadastrarNavio from '@/views/CadastrarNavio'
 import ListagemNavio from '@/views/ListagemNavio'
 
@@ -73,55 +71,58 @@ export default new Router({
     },
     
     {
-      path: '/navios/',
+      path: '/navios',
       name: 'ListagemNavio',
       component: ListagemNavio,
     },
-
-    {
-      path: '/navios/:numero_imo/alterar',
-      name: 'AlterarNavio',
-      component: AlterarNavio,
-    },
-    {
-      path: '/navios/:numero_imo',
-      name: 'ExibirNavio',
-      component: ExibirNavio
-
     {
       path: '/empresas/cadastrar',
       name: 'CadastrarEmpresa',
       component: CadastrarEmpresa
     },
-    
     {
-      path: '/empresas/:id/alterar',
-      name: 'AlterarEmpresa',
-      component: AlterarEmpresa
+      path: '/navios/:numero_imo',
+      name: 'ExibirNavio',
+      component: ExibirNavio
     },
+    {
+      path: '/navios/:numero_imo/alterar',
+      name: 'AlterarNavio',
+      component: AlterarNavio,
+    },
+
+
+    {
+      path: '/empresas',
+      name: 'ListagemEmpresas',
+      component: ListagemEmpresas
+    },
+
     {
       path: '/empresas/:id',
       name: 'ExibirEmpresa',
       component: ExibirEmpresa
     },
     
+
     {
-      path: '/empresas',
-      name: 'ListagemEmpresas',
-      component: ListagemEmpresas
+      path: '/empresas/:id/alterar',
+      name: 'AlterarEmpresa',
+      component: AlterarEmpresa
     },
     
+    {
+      path: '/tipos-carga',
+      name: 'ListagemTiposCarga',
+      component: ListagemTiposCarga
+    },
+
     {
       path: '/tipos-carga/cadastrar',
       name: 'CadastrarTiposCarga',
       component: CadastrarTiposCarga
     },
 
-    {
-      path: '/tipos-carga',
-      name: 'ListagemTiposCarga',
-      component: ListagemTiposCarga
-    },
     
     {
       path: '/tipos-carga/:id/alterar',
