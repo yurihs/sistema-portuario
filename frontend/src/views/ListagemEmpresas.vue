@@ -1,22 +1,24 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="usuarios"
+    :items="empresas"
     :items-per-page="5"
     class="elevation-1"
-    loading-text="Carregando usuários... Por favor aguarde"
+    loading-text="Carregando empresas... Por favor aguarde"
   >
   <template v-slot:top>
       <v-toolbar flat color="white">
         <v-spacer></v-spacer>
-        <v-btn color="primary" dark class="mb-2" :to="'/usuarios/cadastrar'">Novo usuário</v-btn>
+        <v-btn color="primary" dark class="mb-2" :to="'/empresas/cadastrar'">Nova Empresa</v-btn>
       </v-toolbar>
   </template>
     <template v-slot:item="{ item }"> 
-      <router-link tag="tr" :to="'/usuarios/'+item.id">
+      <router-link tag="tr" :to="'/empresas/'+item.id">
         <td>{{item.id}}</td>
+        <td>{{item.nome_fantasia}}</td>  
+        <td>{{item.cnpj}}</td>      
         <td>{{item.email}}</td>
-        <td>{{item.cpf}}</td>
+        <td>{{item.telefone}}</td>
       </router-link>
     </template>
   </v-data-table>
@@ -27,34 +29,30 @@
 import axios from 'axios';
 
 export default {
-  name: 'ListagemUsuarios',
+  name: 'ListagemEmpresas',
   data(){
     return {
-      auth_token_access: localStorage.auth_token,
-
-      usuarios: [],
+      empresas: [],
       headers: [
         {text: 'ID', value: 'id'},
+        {text: 'Nome Fantasia', value: 'nome_fantasia'},
+        {text: 'CNPJ', value: 'cnpj'},
         {text: 'Email', value: 'email'},
-        {text: 'CPF', value: 'cpf'}
+        {text: 'Telefone', value: 'telefone'},        
       ]
     }
   },
   mounted () {
-    this.$emit('message', 'Usuários');
+    this.$emit('message', 'Empresas');
 
     if(!localStorage.getItem('auth_token')){
         this.$router.push('/Login');
     }
 
     axios
-      .get('http://localhost:8000/api/usuarios/', {
-        headers: {
-          Authorization: 'Bearer ' + this.auth_token_access
-        }
-      })
+      .get('http://localhost:8000/api/empresas/')
       .then(response => {
-        this.usuarios = response.data;
+        this.empresas = response.data;
       })
       .catch(error => {
         this.falha = true;

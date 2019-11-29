@@ -14,7 +14,7 @@
   </template>
 
     <template v-slot:item="{ item }"> 
-      <router-link tag="tr" :to="'navios/'+item.id+'/alterar'">
+      <router-link tag="tr" :to="'navios/'+item.numero_imo">
         <td>{{item.numero_imo}}</td>
         <td>{{item.nome}}</td>
         <td>{{item.comprimento_metros}}</td>
@@ -50,6 +50,11 @@ export default {
     }
   },
   mounted () {
+    this.$emit('message', 'Navios');
+
+    if(!localStorage.getItem('auth_token')){
+        this.$router.push('/Login');
+    }
     axios
       .get('http://localhost:8000/api/navios/')
       .then(response => {
