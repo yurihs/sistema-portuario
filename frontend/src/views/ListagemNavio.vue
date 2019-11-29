@@ -55,7 +55,6 @@ export default {
     if(!localStorage.getItem('auth_token')){
         this.$router.push('/Login');
     }
-
     axios
       .get('http://localhost:8000/api/navios/')
       .then(response => {
