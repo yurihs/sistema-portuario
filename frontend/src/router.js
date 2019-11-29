@@ -14,6 +14,7 @@ import ListagemEmpresas from '@/views/ListagemEmpresas'
 
 import CadastrarTiposCarga from '@/views/CadastrarTiposCarga'
 import AlterarTiposCarga from '@/views/AlterarTiposCarga'
+import ListagemTiposCarga from '@/views/ListagemTiposCarga'
 
 import AlterarPorto from '@/views/AlterarPorto'
 import CadastrarPorto from '@/views/CadastrarPorto'
@@ -93,8 +94,14 @@ export default new Router({
     
     {
       path: '/tipos-carga/cadastrar',
-      name: 'CadastrarTiposCargas',
+      name: 'CadastrarTiposCarga',
       component: CadastrarTiposCarga
+    },
+
+    {
+      path: '/tipos-carga',
+      name: 'ListagemTiposCarga',
+      component: ListagemTiposCarga
     },
     
     {
