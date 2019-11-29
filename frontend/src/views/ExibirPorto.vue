@@ -23,7 +23,11 @@ export default {
   },
   mounted () {
     this.$emit('message', 'Portos');
-    
+
+    if(!localStorage.getItem('auth_token')){
+        this.$router.push('/Login');
+    }
+
     axios.get('http://localhost:8000/api/portos/'+ this.$route.params.id +'/')
       .then(response => {
         this.porto = response.data;

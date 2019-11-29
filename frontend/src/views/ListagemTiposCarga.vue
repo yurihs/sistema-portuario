@@ -42,6 +42,10 @@ export default {
  mounted () {
     this.$emit('message', 'Tipos de Cargas');
 
+    if(!localStorage.getItem('auth_token')){
+        this.$router.push('/Login');
+    }
+
     axios
       .get('http://localhost:8000/api/tipos-carga/')
       .then(response => {

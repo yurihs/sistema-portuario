@@ -24,9 +24,6 @@ import CadastrarPorto from '@/views/CadastrarPorto'
 
 import ListagemPortos from '@/views/ListagemPortos'
 
-import CadastrarTiposCarga from '@/views/CadastrarTiposCarga'
-import AlterarTiposCarga from '@/views/AlterarTiposCarga'
-
 import ExibirNavio  from '@/views/ExibirNavio'
 import CadastrarNavio from '@/views/CadastrarNavio'
 import ListagemNavio from '@/views/ListagemNavio'

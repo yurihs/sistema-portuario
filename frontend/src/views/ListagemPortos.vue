@@ -14,7 +14,7 @@
   </template>
 
     <template v-slot:item="{ item }"> 
-      <router-link tag="tr" :to="'portos/'+item.id+'/alterar'">
+      <router-link tag="tr" :to="'portos/'+item.un_locode+'/alterar'">
         <td>{{item.un_locode}}</td>
         <td>{{item.nome}}</td>
         <td>{{item.capacidade_teus_anuais}}</td>
@@ -42,6 +42,13 @@ export default {
     }
   },
   mounted () {
+
+    this.$emit('message', 'Portos');
+
+    if(!localStorage.getItem('auth_token')){
+        this.$router.push('/Login');
+    }
+
     axios
       .get('http://localhost:8000/api/portos/')
       .then(response => {
