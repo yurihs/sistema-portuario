@@ -22,10 +22,15 @@ import ListagemTiposCarga from '@/views/ListagemTiposCarga'
 import AlterarPorto from '@/views/AlterarPorto'
 import CadastrarPorto from '@/views/CadastrarPorto'
 
-import AlterarNavio from '@/views/AlterarNavio'
+import ListagemPortos from '@/views/ListagemPortos'
+
+import CadastrarTiposCarga from '@/views/CadastrarTiposCarga'
+import AlterarTiposCarga from '@/views/AlterarTiposCarga'
+
 import ExibirNavio  from '@/views/ExibirNavio'
 import CadastrarNavio from '@/views/CadastrarNavio'
 import ListagemNavio from '@/views/ListagemNavio'
+import AlterarNavio from '@/views/AlterarNavio'
 
 
 Vue.use(Router)
@@ -129,6 +134,13 @@ export default new Router({
       name: 'AlterarTiposCarga',
       component: AlterarTiposCarga
     },
+
+    {
+      path: '/portos/',
+      name: 'ListaemPortos',
+      component: ListagemPortos
+    },    
+
     
 
     {
