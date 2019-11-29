@@ -8,6 +8,7 @@ import AlterarUsuario from '@/views/AlterarUsuario'
 import ListagemUsuarios from '@/views/ListagemUsuarios'
 import ExibirUsuario from '@/views/ExibirUsuario'
 
+import CadastrarEmpresa from '@/views/CadastrarEmpresa'
 import AlterarEmpresa from '@/views/AlterarEmpresa'
 import ListagemEmpresas from '@/views/ListagemEmpresas'
 
@@ -22,8 +23,6 @@ import AlterarNavio from '@/views/AlterarNavio'
 import CadastrarNavio from '@/views/CadastrarNavio'
 import ListagemNavio from '@/views/ListagemNavio'
 
-import CadastrarTiposCarga from '@/views/CadastrarTiposCarga'
-import AlterarTiposCarga from '@/views/AlterarTiposCarga'
 
 
 Vue.use(Router)
@@ -72,6 +71,12 @@ export default new Router({
       path: '/navios/:numero_imo/alterar',
       name: 'AlterarNavio',
       component: AlterarNavio,
+    },
+
+    {
+      path: '/empresas/cadastrar',
+      name: 'CadastrarEmpresa',
+      component: CadastrarEmpresa
     },
     
     {

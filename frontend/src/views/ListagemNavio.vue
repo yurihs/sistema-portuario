@@ -49,7 +49,9 @@ export default {
       ]
     }
   },
-  mounted () {
+ mounted () {
+    this.$emit('message', 'Navios');
+
     axios
       .get('http://localhost:8000/api/navios/')
       .then(response => {
