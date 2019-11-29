@@ -39,7 +39,6 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-
     <v-app-bar
       app
       color="indigo"
@@ -59,7 +58,7 @@
           justify="center"
         >
           <v-container>
-            <router-view @message="setTitle">
+            <router-view @message="setTitle" @authToken="setAuthToken">
             </router-view>
           </v-container>
         </v-row>
@@ -82,11 +81,15 @@
     },
     data: () => ({
       drawer: null,
-      appTitle: 'Application'
+      appTitle: 'Application',
+      auth_token: ''
     }),
     methods: {
       setTitle(variable){
         this.appTitle = variable;
+      },
+      setAuthToken(token){
+        this.auth_token = token;
       }
     }
   }

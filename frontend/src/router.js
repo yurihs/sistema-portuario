@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import Login from '@/views/Login'
+
 import Inicio from '@/views/Inicio'
 
 import CadastrarUsuario from '@/views/CadastrarUsuario'
@@ -25,7 +27,6 @@ import CadastrarNavio from '@/views/CadastrarNavio'
 import ListagemNavio from '@/views/ListagemNavio'
 
 
-
 Vue.use(Router)
 
 export default new Router({
@@ -36,6 +37,12 @@ export default new Router({
       path: '/',
       name: 'Inicio',
       component: Inicio
+    },
+
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     },
 
     {
@@ -110,27 +117,13 @@ export default new Router({
       component: AlterarTiposCarga
     },
     
-    {
-      path: '/portos/:un_locode/alterar',
-      name: 'AlterarPorto',
-      component: AlterarPorto
-    },
+
     {
       path: '/navios/cadastrar',
       name: 'CadastrarNavio',
       component: CadastrarNavio
     },
     
-    {
-      path: '/tipos-carga/cadastrar',
-      name: 'CadastrarTiposCargas',
-      component: CadastrarTiposCarga
-    },
-    {
-      path: '/tipos-carga/:id/alterar',
-      name: 'AlterarTiposCarga',
-      component: AlterarTiposCarga
-    },
     {
       path: '/portos/cadastrar',
       name: 'CadastrarPorto',

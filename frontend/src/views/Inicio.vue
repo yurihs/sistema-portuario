@@ -38,7 +38,11 @@
 
 <script>
 export default {
-  name: 'Início',
+  name: 'Inicio',
+  data () {
+    return {
+    }
+  },
   mounted () {
     this.$emit('message', 'Início');
   }
