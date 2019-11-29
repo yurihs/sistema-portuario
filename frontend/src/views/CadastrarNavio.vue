@@ -113,11 +113,6 @@
       </v-col>
       
     </v-row>
-      <v-row>
-      <v-col cols="3">
-        <v-btn color="red" class="mr-4" @click="remover" :disabled="carregando || desabilitar_campos">Excluir Navio</v-btn>
-      </v-col>
-    </v-row>
   </form>
   
 </template>
@@ -127,7 +122,7 @@ import { mask } from 'vue-the-mask'
 import axios from 'axios';
 
 export default {
-  name: 'AlterarNavio',
+  name: 'CadastrarNavio',
   directives: {
     mask,
   },
@@ -158,24 +153,10 @@ export default {
     }
   },
   methods: {
-
-    remover() {
-      axios.delete('http://localhost:8000/api/navios/'+ this.$route.params.numero_imo +'/') 
-      .then(() => {              
-        this.desabilitar_campos = true;
-        this.falha = false;
-        this.mensagem = "Navio removido com sucesso.";
-        setTimeout( () => this.$router.push('Inicio'), 2000);
-      })
-      .catch(() => {
-        this.falha = true;
-        this.mensagem = "Erro na Exclusão. Navio relacionado a viagens.";
-      });
-    },
     submit() {
       this.$validator.validateAll().then((result) => {
           if (result) {
-            axios.put('http://localhost:8000/api/navios/'+ this.$route.params.numero_imo +'/', {
+            axios.post('http://localhost:8000/api/navios/', {
               numero_imo: this.numero_imo,
               nome: this.nome,
               estado_bandeira: this.estado_bandeira,
@@ -183,11 +164,11 @@ export default {
               largura_metros: this.largura_metros,
               numero_de_tripulantes: this.numero_de_tripulantes,
               porte_bruto_toneladas: this.porte_bruto_toneladas,
-              empresa: this.empresa.id,
+              empresa: this.empresa,
               tipos_de_carga_suportados: this.tipos_de_carga_suportados
             })
             .then(() => {
-              this.mensagem = "Alteração realizada com sucesso.";
+              this.mensagem = "Cadastro realizado com sucesso.";
               this.falha = false;
             })
             .catch(() => {
@@ -198,28 +179,7 @@ export default {
       })
     }
   },
-
   mounted () {
-    // Carrega informações do navio
-    axios
-      .get('http://localhost:8000/api/navios/'+ this.$route.params.numero_imo +'/')
-      .then(response => {
-        this.navioAntigo = response.data;
-        this.numero_imo = this.navioAntigo.numero_imo;
-        this.nome = this.navioAntigo.nome;
-        this.estado_bandeira = this.navioAntigo.estado_bandeira;
-        this.comprimento_metros = this.navioAntigo.comprimento_metros;
-        this.largura_metros = this.navioAntigo.largura_metros;
-        this.numero_de_tripulantes = this.navioAntigo.numero_de_tripulantes;
-        this.porte_bruto_toneladas = this.navioAntigo.porte_bruto_toneladas;
-        this.empresa = this.navioAntigo.empresa;
-        this.tipos_de_carga_suportados = this.navioAntigo.tipos_de_carga_suportados.map(x => x.id);
-      })
-      .catch(error => {
-        this.falha = true;
-        this.mensagem = error;
-      })
-      .finally(() => this.carregando = false)
 
     // Carrega empresas
     axios
