@@ -84,16 +84,14 @@
     <h3>Tipos de Cargas:</h3>
         <v-row>
             <v-col offset-md="1">
-                <v-row>
-                    <v-col cols="4">
-                        <p><b>ID:</b> {{ navio.tipos_de_carga_suportados.id}}</p>
-                     </v-col>
-                    <v-col cols="4">
-                        <p><b>Nome:</b> {{ navio.tipos_de_carga_suportados.nome }}</p>
+                <v-row v-for="carga in navio.tipos_de_carga_suportados" :key='carga'>
+                    <v-col cols="6">
+                        <p><b>Nome:</b> {{ carga.nome }}</p>
                     </v-col>
-                    <v-col cols="4">
-                        <p><b>Unidade:</b> {{ navio.tipos_de_carga_suportados.unidade }}</p>
-                    </v-col>                    
+                    <v-col cols="6">
+                        <p><b>Unidade:</b> {{ carga.unidade }}</p>
+                    </v-col>
+                      
                 </v-row>
             </v-col>
         </v-row>     
@@ -117,6 +115,8 @@ export default {
   data() {
     return {
       navio: [],
+      cargas:[],
+      
     }
   },
   mounted () {
@@ -124,8 +124,10 @@ export default {
       .then(response => {
         this.navio = response.data;
       })
-  }    
-}
+  }  
+    
+}    
+
 </script>
 
 <style scoped>
