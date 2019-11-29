@@ -64,7 +64,7 @@ export default {
               // this.$emit('authToken', response.data);
               this.mensagem = "Login realizado com sucesso.";
               this.falha = false;
-              setTimeout( () => this.$router.push('Inicio'), 2000);
+              setTimeout( () => this.$router.push('Inicio'), 500);
             })
             .catch(() => {
               this.falha = true;

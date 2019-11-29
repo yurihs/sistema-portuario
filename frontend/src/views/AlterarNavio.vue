@@ -200,6 +200,13 @@ export default {
   },
 
   mounted () {
+
+    this.$emit('message', 'Navios');
+
+    if(!localStorage.getItem('auth_token')){
+        this.$router.push('/Login');
+    }
+
     // Carrega informações do navio
     axios
       .get('http://localhost:8000/api/navios/'+ this.$route.params.numero_imo +'/')

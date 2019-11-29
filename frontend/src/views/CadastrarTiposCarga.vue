@@ -84,7 +84,13 @@ export default {
       })
     }
   },
-  
+  mounted () {
+    this.$emit('message', 'Tipos de carga');
+
+    if(!localStorage.getItem('auth_token')){
+        this.$router.push('/Login');
+    }
+  }
   
 }
 
