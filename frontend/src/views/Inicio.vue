@@ -11,6 +11,10 @@ export default {
   },
   mounted () {
     this.$emit('message', 'Início');
+
+    if(!localStorage.getItem('auth_token')){
+        this.$router.push('/Login');
+    }
   }
 }
 </script>

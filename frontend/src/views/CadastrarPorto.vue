@@ -165,7 +165,13 @@ export default {
       })
     },
   },    
-  
+  mounted () {
+    this.$emit('message', 'Portos');
+
+    if(!localStorage.getItem('auth_token')){
+        this.$router.push('/Login');
+    }
+  }
 }
 
 </script>

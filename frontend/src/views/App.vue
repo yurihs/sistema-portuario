@@ -37,6 +37,14 @@
             <v-list-item-title>Navios</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item link v-on:click="logout()">
+          <v-list-item-action>
+            <v-icon></v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Logout</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
@@ -90,6 +98,10 @@
       },
       setAuthToken(token){
         this.auth_token = token;
+      },
+      logout(){
+        localStorage.removeItem('auth_token');
+        this.$router.push('/Inicio');
       }
     }
   }

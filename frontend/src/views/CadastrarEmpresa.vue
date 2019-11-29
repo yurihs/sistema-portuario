@@ -202,6 +202,11 @@ export default {
     }
   },
   mounted () {
+    this.$emit('message', 'Empresas');
+
+    if(!localStorage.getItem('auth_token')){
+        this.$router.push('/Login');
+    }
     // Carrega grupos
     axios
       .get('http://localhost:8000/api/grupos/')

@@ -192,6 +192,12 @@ export default {
   },    
   
   mounted () {
+    this.$emit('message', 'Portos');
+
+    if(!localStorage.getItem('auth_token')){
+        this.$router.push('/Login');
+    }
+
     // Carrega informações do usuário
     axios
       .get('http://localhost:8000/api/portos/'+ this.$route.params.un_locode +'/')
