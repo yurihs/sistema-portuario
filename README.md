@@ -66,6 +66,20 @@ Pré-requisitos:
 10. Acessar a documentação da API em http://localhost:8000/api/swagger/  
    Usuário padrão: admin@example.com, 123
 
+#### Frontend
+
+1. Entrar no diretório da aplicação de frontend
+```sh
+cd frontend/
+```
+2. Instalar os pacotes node necessários
+```sh
+npm install
+```
+3. Iniciar a aplicação
+```sh
+npm run serve
+```
 
 ## Testes
 
