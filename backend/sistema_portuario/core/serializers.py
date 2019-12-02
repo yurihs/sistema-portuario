@@ -231,6 +231,22 @@ class ViagemSerializer(serializers.ModelSerializer):
     )
     cargas = CargaSerializer(many=True)
 
+    def create(self, validated_data):
+        cargas_data = validated_data.pop("cargas", None)
+
+        viagem = models.Viagem.objects.create(**validated_data)
+
+        if cargas_data is not None:
+            for carga_data in cargas_data:
+                carga, _ = models.Carga.objects.get_or_create(
+                    viagem=viagem, **carga_data
+                )
+                viagem.cargas.add(carga)
+
+        viagem.save()
+
+        return viagem
+
     def update(self, viagem, validated_data):
         cargas_data = validated_data.pop("cargas", None)
         viagem.cargas.all().delete()
