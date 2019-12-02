@@ -1,3 +1,6 @@
+import random
+
+
 def validar_imo(imo):
     """
     Este é constituído por um número de seis dígitos sequenciais únicos
@@ -21,3 +24,9 @@ def validar_imo(imo):
         return False
 
     return str(soma)[-1] == verificador
+
+
+def gerar_numero_imo():
+    digitos = [random.randint(0, 9) for x in range(6)]
+    verificador = sum(i * d for i, d in enumerate(digitos[::-1], start=2))
+    return "".join(map(str, digitos)) + str(verificador)[-1]

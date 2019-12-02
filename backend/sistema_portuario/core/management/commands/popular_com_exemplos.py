@@ -12,6 +12,7 @@ from yaspin.spinners import Spinners
 
 from sistema_portuario import settings
 from sistema_portuario.core import models
+from sistema_portuario.core.utils import gerar_numero_imo
 
 gen = Generic("pt-br")
 BrazilSpecProvider.Meta.name = "brasil"
@@ -260,7 +261,7 @@ class Command(BaseCommand):
         )
 
         return models.Navio(
-            numero_imo=self.gerar_numero_imo(),
+            numero_imo=gerar_numero_imo(),
             nome=random.choice(geradores_nome)(),
             estado_bandeira=gen.address.country_code(),
             comprimento_metros=self.talvez_gerar(lambda: gen.numbers.between(200, 500)),
@@ -273,11 +274,6 @@ class Command(BaseCommand):
             ),
             empresa=empresa,
         )
-
-    def gerar_numero_imo(self):
-        digitos = [random.randint(0, 9) for x in range(6)]
-        verificador = sum(i * d for i, d in enumerate(digitos[::-1], start=2))
-        return "".join(map(str, digitos)) + str(verificador)[-1]
 
     def gerar_porto(self):
         locale = random.choice(locales)
