@@ -22,7 +22,8 @@
         </v-col>
     </v-row>
     <hr>
-    <h3>Empresa:</h3>
+    <div v-if="navio.empresa">
+      <h3>Empresa:</h3>
         <v-row>
             <v-col offset-md="1">
                 <v-row>
@@ -82,6 +83,8 @@
                 </v-col>
             </v-row> 
         </div>
+    </div>
+    
     <hr>
     <h3>Tipos de Cargas:</h3>
         <v-row>

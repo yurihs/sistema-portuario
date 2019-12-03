@@ -45,7 +45,7 @@ export default {
         {text: 'Número de Tripulantes', value: 'numero_de_tripulantes'},
         {text: 'Porte Bruto', value: 'porte_bruto_toneladas'},
         {text: 'Empresa', value: 'empresa'},
-        {text: 'CPF', value: 'estado_bandeira'}
+        {text: 'Bandeira', value: 'estado_bandeira'}
       ]
     }
   },
